@@ -5,15 +5,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
+
 namespace EducationCenter.Infrastructure.Shared
 {
-    public static class IoCRegistrationExtension
+    public static class ServiceExtensions
     {
-        public static void RegisterIoCDependencies(this IServiceCollection services)
+        public static void ConfigureCors(this IServiceCollection services)
         {
-            services.AddScoped<IAccountTypeRepository,AccountTypeRepository>();
-
-
+          
         }
+
     }
 }

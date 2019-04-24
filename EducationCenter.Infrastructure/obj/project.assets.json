@@ -3490,11 +3490,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lala Las\\source\\repos\\EducationCenter\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj",
+      "projectUniqueName": "G:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj",
       "projectName": "EducationCenter.Infrastructure",
-      "projectPath": "C:\\Users\\Lala Las\\source\\repos\\EducationCenter\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj",
+      "projectPath": "G:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Lala Las\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lala Las\\source\\repos\\EducationCenter\\EducationCenter.Infrastructure\\obj\\",
+      "outputPath": "G:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3513,8 +3513,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Lala Las\\source\\repos\\EducationCenter\\EducationCenter.Core\\EducationCenter.Core.csproj": {
-              "projectPath": "C:\\Users\\Lala Las\\source\\repos\\EducationCenter\\EducationCenter.Core\\EducationCenter.Core.csproj"
+            "G:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Core\\EducationCenter.Core.csproj": {
+              "projectPath": "G:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Core\\EducationCenter.Core.csproj"
             }
           }
         }

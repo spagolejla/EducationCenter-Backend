@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EducationCenter.Core.Entities;
 using EducationCenter.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace EducationCenter.Api.Controllers
      
 
         
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<ActionResult<IEnumerable<AccountType>>> GetAllAccountTypes()
         {
            IEnumerable<AccountType> accountTypes = await _repository.GetAllAccountTypes();

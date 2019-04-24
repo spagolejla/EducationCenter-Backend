@@ -10,3 +10,15 @@ C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Infrastructure\bi
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.csproj.CopyComplete
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.dll
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\bin\Debug\netcoreapp2.2\EducationCenter.Infrastructure.deps.json
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\bin\Debug\netcoreapp2.2\EducationCenter.Infrastructure.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\bin\Debug\netcoreapp2.2\EducationCenter.Infrastructure.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\bin\Debug\netcoreapp2.2\EducationCenter.Core.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\bin\Debug\netcoreapp2.2\EducationCenter.Core.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.csprojAssemblyReference.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.csproj.CoreCompileInputs.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.AssemblyInfoInputs.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.AssemblyInfo.cs
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.csproj.CopyComplete
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Infrastructure\obj\Debug\netcoreapp2.2\EducationCenter.Infrastructure.pdb

@@ -7,3 +7,12 @@ C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\ne
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.AssemblyInfo.cs
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.dll
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\bin\Debug\netcoreapp2.2\EducationCenter.Core.deps.json
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\bin\Debug\netcoreapp2.2\EducationCenter.Core.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\bin\Debug\netcoreapp2.2\EducationCenter.Core.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.csprojAssemblyReference.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.csproj.CoreCompileInputs.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.AssemblyInfoInputs.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.AssemblyInfo.cs
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Core\obj\Debug\netcoreapp2.2\EducationCenter.Core.pdb

@@ -17,3 +17,22 @@ C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Api\bin\Debug\net
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.csproj.CopyComplete
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.dll
 C:\Users\Lala Las\source\repos\EducationCenter\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Api.deps.json
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Api.runtimeconfig.json
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Api.runtimeconfig.dev.json
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Api.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Api.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Core.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Infrastructure.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Infrastructure.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\bin\Debug\netcoreapp2.2\EducationCenter.Core.pdb
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.csprojAssemblyReference.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.csproj.CoreCompileInputs.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.RazorAssemblyInfo.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.RazorAssemblyInfo.cs
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.AssemblyInfoInputs.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.AssemblyInfo.cs
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.RazorTargetAssemblyInfo.cache
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.csproj.CopyComplete
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.dll
+G:\FIT\Završni\EducationCenter\EducationCenter-Backend\EducationCenter.Api\obj\Debug\netcoreapp2.2\EducationCenter.Api.pdb
