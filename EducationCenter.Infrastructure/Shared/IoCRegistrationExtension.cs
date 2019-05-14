@@ -12,7 +12,7 @@ namespace EducationCenter.Infrastructure.Shared
         public static void RegisterIoCDependencies(this IServiceCollection services)
         {
             services.AddScoped<IAccountTypeRepository,AccountTypeRepository>();
-
+            services.AddScoped<IStudentRepository, StudentRepository>();
 
         }
     }

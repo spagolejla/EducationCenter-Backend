@@ -23,10 +23,10 @@ namespace EducationCenter.Api.Controllers
      
 
         
-        [HttpGet, Authorize]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<AccountType>>> GetAllAccountTypes()
         {
-           IEnumerable<AccountType> accountTypes = await _repository.GetAllAccountTypes();
+            IEnumerable<AccountType> accountTypes = await _repository.GetAllAccountTypes();
             return Ok(accountTypes);
 
         }
