@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EducationCenter.Infrastructure.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20190423110649_init")]
-    partial class init
+    [Migration("20190515132319_inic")]
+    partial class inic
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -432,6 +432,8 @@ namespace EducationCenter.Infrastructure.Migrations
 
                     b.Property<bool>("Active");
 
+                    b.Property<string>("AvatarUrl");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Password")
@@ -452,7 +454,8 @@ namespace EducationCenter.Infrastructure.Migrations
                             Id = 1,
                             AccountTypeId = 1,
                             Active = true,
-                            CreatedDate = new DateTime(2019, 4, 23, 13, 6, 46, 696, DateTimeKind.Local).AddTicks(5737),
+                            AvatarUrl = "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=BlazerShirt&eyeType=Default&eyebrowType=FlatNatural&mouthType=Default&skinColor=Light",
+                            CreatedDate = new DateTime(2019, 5, 15, 15, 23, 17, 356, DateTimeKind.Local).AddTicks(5113),
                             Password = "test",
                             Username = "admin"
                         },
@@ -461,7 +464,8 @@ namespace EducationCenter.Infrastructure.Migrations
                             Id = 2,
                             AccountTypeId = 2,
                             Active = true,
-                            CreatedDate = new DateTime(2019, 4, 23, 13, 6, 46, 704, DateTimeKind.Local).AddTicks(9866),
+                            AvatarUrl = "https://avataaars.io/?avatarStyle=Circle&topType=LongHairDreads&accessoriesType=Blank&hairColor=Red&facialHairType=MoustacheFancy&facialHairColor=Brown&clotheType=GraphicShirt&clotheColor=Blue02&graphicType=Skull&eyeType=Squint&eyebrowType=RaisedExcitedNatural&mouthType=Serious&skinColor=Yellow",
+                            CreatedDate = new DateTime(2019, 5, 15, 15, 23, 17, 365, DateTimeKind.Local).AddTicks(6423),
                             Password = "test",
                             Username = "educator"
                         },
@@ -470,7 +474,8 @@ namespace EducationCenter.Infrastructure.Migrations
                             Id = 3,
                             AccountTypeId = 3,
                             Active = true,
-                            CreatedDate = new DateTime(2019, 4, 23, 13, 6, 46, 704, DateTimeKind.Local).AddTicks(9915),
+                            AvatarUrl = "https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Sunglasses&hatColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Black&eyeType=Close&eyebrowType=Angry&mouthType=Default&skinColor=Light",
+                            CreatedDate = new DateTime(2019, 5, 15, 15, 23, 17, 365, DateTimeKind.Local).AddTicks(6527),
                             Password = "test",
                             Username = "student"
                         });

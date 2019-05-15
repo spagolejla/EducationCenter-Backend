@@ -17,6 +17,6 @@ namespace EducationCenter.Api.Contracts
         public string Username { get; set; }
         public string AccountType { get; set; }
         public bool Active { get; set; }
-
+        public string AvatarUrl { get; set; }
     }
 }

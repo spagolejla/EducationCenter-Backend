@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EducationCenter.Api.Controllers
 {
 
-    [Route("api/student")]
+   
     [ApiController]
     public class StudentController : ControllerBase
     {
@@ -22,7 +22,7 @@ namespace EducationCenter.Api.Controllers
             _studentRepository = studentRepository;
         }
 
-
+        [Route("api/student")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StudentDTO>>> GetAllStudents()
         {
@@ -31,7 +31,7 @@ namespace EducationCenter.Api.Controllers
 
         }
 
-        [Route("/id")]
+        [Route("api/student/{id}")]
         [HttpGet]
         public async  Task<ActionResult<StudentDTO>> GetById(int id)
         {

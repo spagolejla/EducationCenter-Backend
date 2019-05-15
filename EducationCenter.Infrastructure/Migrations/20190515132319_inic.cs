@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EducationCenter.Infrastructure.Migrations
 {
-    public partial class init : Migration
+    public partial class inic : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,7 +44,8 @@ namespace EducationCenter.Infrastructure.Migrations
                     Password = table.Column<string>(maxLength: 50, nullable: true),
                     AccountTypeId = table.Column<int>(nullable: false),
                     Active = table.Column<bool>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false)
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    AvatarUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -431,18 +432,18 @@ namespace EducationCenter.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "UserAccounts",
-                columns: new[] { "Id", "AccountTypeId", "Active", "CreatedDate", "Password", "Username" },
-                values: new object[] { 1, 1, true, new DateTime(2019, 4, 23, 13, 6, 46, 696, DateTimeKind.Local).AddTicks(5737), "test", "admin" });
+                columns: new[] { "Id", "AccountTypeId", "Active", "AvatarUrl", "CreatedDate", "Password", "Username" },
+                values: new object[] { 1, 1, true, "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=BlazerShirt&eyeType=Default&eyebrowType=FlatNatural&mouthType=Default&skinColor=Light", new DateTime(2019, 5, 15, 15, 23, 17, 356, DateTimeKind.Local).AddTicks(5113), "test", "admin" });
 
             migrationBuilder.InsertData(
                 table: "UserAccounts",
-                columns: new[] { "Id", "AccountTypeId", "Active", "CreatedDate", "Password", "Username" },
-                values: new object[] { 2, 2, true, new DateTime(2019, 4, 23, 13, 6, 46, 704, DateTimeKind.Local).AddTicks(9866), "test", "educator" });
+                columns: new[] { "Id", "AccountTypeId", "Active", "AvatarUrl", "CreatedDate", "Password", "Username" },
+                values: new object[] { 2, 2, true, "https://avataaars.io/?avatarStyle=Circle&topType=LongHairDreads&accessoriesType=Blank&hairColor=Red&facialHairType=MoustacheFancy&facialHairColor=Brown&clotheType=GraphicShirt&clotheColor=Blue02&graphicType=Skull&eyeType=Squint&eyebrowType=RaisedExcitedNatural&mouthType=Serious&skinColor=Yellow", new DateTime(2019, 5, 15, 15, 23, 17, 365, DateTimeKind.Local).AddTicks(6423), "test", "educator" });
 
             migrationBuilder.InsertData(
                 table: "UserAccounts",
-                columns: new[] { "Id", "AccountTypeId", "Active", "CreatedDate", "Password", "Username" },
-                values: new object[] { 3, 3, true, new DateTime(2019, 4, 23, 13, 6, 46, 704, DateTimeKind.Local).AddTicks(9915), "test", "student" });
+                columns: new[] { "Id", "AccountTypeId", "Active", "AvatarUrl", "CreatedDate", "Password", "Username" },
+                values: new object[] { 3, 3, true, "https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Sunglasses&hatColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Black&eyeType=Close&eyebrowType=Angry&mouthType=Default&skinColor=Light", new DateTime(2019, 5, 15, 15, 23, 17, 365, DateTimeKind.Local).AddTicks(6527), "test", "student" });
 
             migrationBuilder.InsertData(
                 table: "Administrators",

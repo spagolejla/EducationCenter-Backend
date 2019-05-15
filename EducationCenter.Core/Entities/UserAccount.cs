@@ -22,13 +22,16 @@ namespace EducationCenter.Core.Entities
         public bool Active { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        public UserAccount(string username, string password, int AccountTypeId)
+        public string AvatarUrl { get; set; }
+
+        public UserAccount(string username, string password, int AccountTypeId, string avatarUrl)
         {
             this.Username = username;
             this.Password = password;
             this.AccountTypeId = AccountTypeId;
             this.Active = true;
             this.CreatedDate = DateTime.Now;
+            this.AvatarUrl = avatarUrl;
         }
     }
 }

@@ -21,8 +21,8 @@ namespace EducationCenter.Api.Contracts
                 Description = student.Description,
                 Username = student.UserAccount.Username,
                 Active = student.UserAccount.Active,
-                AccountType = student.UserAccount.AccountType.Type
-
+                AccountType = student.UserAccount.AccountType.Type,
+                AvatarUrl = student.UserAccount.AvatarUrl
             };
         }
 
