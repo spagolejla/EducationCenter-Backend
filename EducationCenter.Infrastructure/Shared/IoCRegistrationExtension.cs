@@ -13,6 +13,7 @@ namespace EducationCenter.Infrastructure.Shared
         {
             services.AddScoped<IAccountTypeRepository,AccountTypeRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
 
         }
     }

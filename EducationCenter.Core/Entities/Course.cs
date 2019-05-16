@@ -12,7 +12,7 @@ namespace EducationCenter.Core.Entities
         public string Description { get; set; }
         public int NumberOfLectures { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime ClassStartTime { get; set; }
+        public string ClassStartTime { get; set; }
 
 
         public string[] DaysOfWeek { get; set; }
