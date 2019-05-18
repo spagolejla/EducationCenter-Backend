@@ -19,9 +19,22 @@ namespace EducationCenter.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<int> AddPayment(Payment payment)
+        {
+            var pym = _context.Payments.AddAsync(payment);
+            _context.SaveChanges();
+
+            return payment.Id;
+        }
+
         public async Task<IEnumerable<Payment>> GetAllPayments()
         {
-            return await _context.Payments.Include(s => s.Student).Include(c => c.Course).ToListAsync();
+            return await _context.Payments.Include(s => s.Student).Include(c => c.Course).OrderByDescending(d=>d.Date).ToListAsync();
+        }
+
+        public async Task<Payment> GetPaymentById(int id)
+        {
+            return await _context.Payments.Where(p=>p.Id == id).Include(s => s.Student).Include(c => c.Course).OrderByDescending(d => d.Date).FirstOrDefaultAsync();
         }
     }
 }

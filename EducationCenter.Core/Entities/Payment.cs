@@ -19,5 +19,14 @@ namespace EducationCenter.Core.Entities
         public double Amount { get; set; }
 
         public DateTime Date { get; set; }
+
+        public Payment(int studentId, int courseId, double amount, DateTime date)
+        {
+            this.StudentId = studentId;
+            this.CourseId = courseId;
+            this.Amount = amount;
+            this.Date = date;
+
+        }
     }
 }

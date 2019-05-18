@@ -31,5 +31,10 @@ namespace EducationCenter.Api.Contracts
             return paymentsDTO;
         }
 
+        public static Payment ToEntity(this PaymentInsertDTO pidto)
+        {
+            return new Payment(pidto.StudentId, pidto.CourseId, pidto.Amount, pidto.Date);
+        }
+
     }
 }

@@ -25,13 +25,35 @@ namespace EducationCenter.Api.Controllers
         }
 
         [HttpGet]
-        [Route("api/payment")]
+        [Route("api/payments")]
         public async Task<ActionResult<IEnumerable<PaymentDTO>>> GetAllPayments()
         {
             IEnumerable<Payment> payments = await _paymentRepository.GetAllPayments();
 
             return Ok(payments.ToDTOList());
         }
-    
+
+        [HttpGet]
+        [Route("api/payments/{id}")]
+        public async Task<ActionResult<Payment>> GetPaymentById( int id)
+        {
+            Payment payment = await _paymentRepository.GetPaymentById(id);
+
+            if (payment == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(payment);
+        }
+
+        [HttpPost]
+        [Route("api/payment")]
+        public async Task<ActionResult> PostPayment(PaymentInsertDTO payment)
+        {
+            var paymentId = await _paymentRepository.AddPayment(payment.ToEntity());
+            return Ok();
+        }
+
     }
 }

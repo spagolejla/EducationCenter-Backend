@@ -8,7 +8,10 @@ namespace EducationCenter.Core.Interfaces
 {
     public interface IPaymentRepository: IRepository<Payment>
     {
+        Task<int> AddPayment(Payment payment);
         Task<IEnumerable<Payment>> GetAllPayments();
+        Task<Payment> GetPaymentById(int id);
+
 
 
     }
