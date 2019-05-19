@@ -55,5 +55,26 @@ namespace EducationCenter.Api.Controllers
             return Ok();
         }
 
+        [HttpPut]
+        [Route("api/payment")]
+        public async Task<ActionResult> PutPayment(Payment payment)
+        {
+            var _payment = await _paymentRepository.GetPaymentById(payment.Id);
+
+            if (payment == null)
+            {
+                return NotFound();
+            }
+
+            _payment.StudentId = payment.StudentId;
+            _payment.CourseId = payment.CourseId;
+            _payment.Amount = payment.Amount;
+            _payment.Date = payment.Date;
+
+            _paymentRepository.UpdatePayment(_payment);
+
+            return NoContent();
+        }
+
     }
 }

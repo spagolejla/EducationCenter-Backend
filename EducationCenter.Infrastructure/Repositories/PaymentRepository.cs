@@ -36,5 +36,10 @@ namespace EducationCenter.Infrastructure.Repositories
         {
             return await _context.Payments.Where(p=>p.Id == id).Include(s => s.Student).Include(c => c.Course).OrderByDescending(d => d.Date).FirstOrDefaultAsync();
         }
+
+        public void UpdatePayment(Payment payment)
+        {
+            _context.SaveChanges();
+        }
     }
 }
