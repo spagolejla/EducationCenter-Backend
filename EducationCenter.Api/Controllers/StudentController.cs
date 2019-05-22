@@ -22,7 +22,7 @@ namespace EducationCenter.Api.Controllers
             _studentRepository = studentRepository;
         }
 
-        [Route("api/student")]
+        [Route("api/students")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StudentDTO>>> GetAllStudents()
         {
