@@ -9,5 +9,9 @@ namespace EducationCenter.Core.Interfaces
     public interface ICourseRepository: IRepository<Course>
     {
         Task<IEnumerable<Course>> GetAllCourses();
+        Task<IEnumerable<Course>> GetByEducatorId(int id);
+        Task<IEnumerable<Course>> GetByStudentId(int id);
+
+
     }
 }

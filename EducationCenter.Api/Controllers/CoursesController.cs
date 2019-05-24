@@ -32,5 +32,23 @@ namespace EducationCenter.Api.Controllers
 
         }
 
+        [Route("api/educator/{educatorId}/courses")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByEducatorId(int educatorId)
+        {
+            IEnumerable<Course> courses = await _courseRepository.GetByEducatorId(educatorId);
+            return Ok(courses.ToDTOList());
+
+        }
+
+        [Route("api/student/{studentId}/courses")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByStudentId(int studentId)
+        {
+            IEnumerable<Course> courses = await _courseRepository.GetByStudentId(studentId);
+            return Ok(courses.ToDTOList());
+
+        }
+
     }
 }

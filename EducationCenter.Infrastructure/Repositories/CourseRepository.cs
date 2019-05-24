@@ -4,6 +4,7 @@ using EducationCenter.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,6 +22,20 @@ namespace EducationCenter.Infrastructure.Repositories
         public async Task<IEnumerable<Course>> GetAllCourses()
         {
             return await _context.Courses.Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Course>> GetByEducatorId(int id)
+        {
+            return await _context.Courses.Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).Where(x=>x.EducatorId==id).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Course>> GetByStudentId(int id)
+        {
+            var STUDENT_COURSES = _context.StudentCourses.Where(up => up.StudentId == id)
+            .Select(c => c.Course)
+            .Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).ToListAsync();
+
+            return await STUDENT_COURSES;
         }
     }
 }
