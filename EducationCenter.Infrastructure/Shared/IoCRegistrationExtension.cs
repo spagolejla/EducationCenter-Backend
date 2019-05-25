@@ -17,6 +17,8 @@ namespace EducationCenter.Infrastructure.Shared
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IAdministratorRepository, AdministratorRepository>();
             services.AddScoped<IEducatorRepository, EducatorRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
+
 
 
 
