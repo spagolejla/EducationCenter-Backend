@@ -5,19 +5,17 @@ using System.Threading.Tasks;
 
 namespace EducationCenter.Api.Contracts
 {
-    public class CourseDTO
+    public class CourseInsertDTO
     {
-        public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int NumberOfLectures { get; set; }
+        public double Price { get; set; }
         public DateTime StartDate { get; set; }
         public string ClassStartTime { get; set; }
         public string DaysOfWeek { get; set; }
-        public string Administrator { get; set; }
-        public string Educator { get; set; }
-        public string CourseField { get; set; }
-        public double Price { get; set; }
-
+        public int AdministratorId { get; set; }
+        public int EducatorId { get; set; }
+        public int CourseFieldId { get; set; }
     }
 }

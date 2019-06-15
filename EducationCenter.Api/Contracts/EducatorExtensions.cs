@@ -17,6 +17,7 @@ namespace EducationCenter.Api.Contracts
                 LastName = educator.LastName,
                 Email = educator.Email,
                 CourseField = educator.CourseField.Field,
+                CourseFieldId = educator.CourseField.Id,
                 Phone = educator.Phone,
                 Title = educator.Title,
                 Username = educator.UserAccount.Username,

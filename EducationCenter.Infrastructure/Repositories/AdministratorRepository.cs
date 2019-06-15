@@ -19,6 +19,15 @@ namespace EducationCenter.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<int> AddAdmin(Administrator admin)
+        {
+            var a = _context.Administrators.Add(admin);
+
+            _context.SaveChanges();
+
+            return admin.Id;
+        }
+
         public async Task<IEnumerable<Administrator>> GetAllAdministrators()
         {
            return await _context.Administrators.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).ToListAsync();

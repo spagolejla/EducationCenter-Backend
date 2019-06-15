@@ -38,5 +38,10 @@ namespace EducationCenter.Api.Contracts
             return coursesDTO;
         }
 
+        public static Course ToEntity(this CourseInsertDTO cidto)
+        {
+            return new Course(cidto.Name, cidto.Description, cidto.NumberOfLectures, cidto.Price, cidto.StartDate, cidto.DaysOfWeek, cidto.AdministratorId, cidto.EducatorId, cidto.CourseFieldId, cidto.ClassStartTime);
+        }
+
     }
 }

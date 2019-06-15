@@ -8,6 +8,20 @@ namespace EducationCenter.Core.Entities
 {
     public class Course: BaseEntity
     {
+        public Course(string name, string description, int numberOfLectures, double price, DateTime startDate, string daysOfWeek, int administratorId, int educatorId, int courseFieldId, string classStartTime)
+        {
+            Name = name;
+            Description = description;
+            NumberOfLectures = numberOfLectures;
+            Price = price;
+            StartDate = startDate;
+            DaysOfWeek = daysOfWeek;
+            AdministratorId = administratorId;
+            EducatorId = educatorId;
+            CourseFieldId = courseFieldId;
+            ClassStartTime = classStartTime;
+        }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public int NumberOfLectures { get; set; }
@@ -15,7 +29,7 @@ namespace EducationCenter.Core.Entities
         public string ClassStartTime { get; set; }
 
 
-        public string[] DaysOfWeek { get; set; }
+        public string DaysOfWeek { get; set; }
 
         public Administrator Administrator { get; set; }
         [ForeignKey(nameof(Administrator))]
@@ -31,5 +45,10 @@ namespace EducationCenter.Core.Entities
         
 
         public double Price { get; set; }
+
+
+       
+
+      
     }
 }

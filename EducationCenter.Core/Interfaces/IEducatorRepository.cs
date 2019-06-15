@@ -10,5 +10,6 @@ namespace EducationCenter.Core.Interfaces
     {
         Task<IEnumerable<Educator>> GetAllEducators();
         Task<Educator> GetById(int id);
+        Task<int> AddEducator(Educator educator);
     }
 }

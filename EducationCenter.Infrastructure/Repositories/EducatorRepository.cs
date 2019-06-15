@@ -19,6 +19,15 @@ namespace EducationCenter.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<int> AddEducator(Educator educator)
+        {
+            var e = _context.Educators.Add(educator);
+
+            _context.SaveChanges();
+
+            return educator.Id;
+        }
+
         public async Task<IEnumerable<Educator>> GetAllEducators()
         {
             return await _context.Educators.Include(cf=>cf.CourseField).Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).ToListAsync();

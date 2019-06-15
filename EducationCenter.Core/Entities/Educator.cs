@@ -48,6 +48,7 @@ namespace EducationCenter.Core.Entities
             this.Title = title;
             this.CourseFieldId = courseFieldId;
         }
+      
 
     }
 }

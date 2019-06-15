@@ -17,10 +17,13 @@ namespace EducationCenter.Api.Controllers
     public class AdministratorsController : ControllerBase
     {
         private readonly IAdministratorRepository _administratorRepository;
+        private readonly IUserAccountRepository _userAccountRepository;
 
-        public AdministratorsController(IAdministratorRepository administratorRepository)
+
+        public AdministratorsController(IAdministratorRepository administratorRepository, IUserAccountRepository userAccountRepository)
         {
             _administratorRepository = administratorRepository;
+            _userAccountRepository = userAccountRepository;
         }
 
         [Route("api/administrators")]
@@ -42,6 +45,38 @@ namespace EducationCenter.Api.Controllers
         }
 
 
+        [HttpPost]
+        [Route("api/administrator")]
+        public async Task<ActionResult> PostEducator(AdminInsertDTO admin)
+        {
+            try
+            {
+                UserAccount newAccount = new UserAccount(admin.Username, admin.Password, 1, admin.AvatarUrl);
+
+                int newAccountId = await _userAccountRepository.AddUserAccount(newAccount);
+
+                if (newAccountId != 0)
+                {
+                    Administrator newAdmin = new Administrator(admin.FirstName, admin.LastName,
+                   admin.Email, admin.Phone, newAccountId);
+
+
+                    var admId = await _administratorRepository.AddAdmin(newAdmin);
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+
+        }
 
 
 

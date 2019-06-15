@@ -37,11 +37,7 @@ namespace EducationCenter.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>()
-            .Property(e => e.DaysOfWeek)
-            .HasConversion(
-                v => string.Join(',', v),
-                v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
+            
 
             modelBuilder.Entity<Course>()
                .HasOne(e => e.Educator)

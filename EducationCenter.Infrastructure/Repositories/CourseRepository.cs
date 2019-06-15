@@ -24,6 +24,11 @@ namespace EducationCenter.Infrastructure.Repositories
             return await _context.Courses.Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).ToListAsync();
         }
 
+        public async Task<Course> GetById(int id)
+        {
+            return await _context.Courses.Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<Course>> GetByEducatorId(int id)
         {
             return await _context.Courses.Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).Where(x=>x.EducatorId==id).ToListAsync();
@@ -36,6 +41,14 @@ namespace EducationCenter.Infrastructure.Repositories
             .Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).ToListAsync();
 
             return await STUDENT_COURSES;
+        }
+
+        public async  Task<int> AddCourse(Course course)
+        {
+            var c = _context.Courses.AddAsync(course);
+            _context.SaveChanges();
+
+            return course.Id;
         }
     }
 }

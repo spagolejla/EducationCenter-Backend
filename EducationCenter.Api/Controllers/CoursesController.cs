@@ -32,6 +32,15 @@ namespace EducationCenter.Api.Controllers
 
         }
 
+        [Route("api/course/{id}")]
+        [HttpGet]
+        public async Task<ActionResult<CourseDTO>> GetById(int id)
+        {
+            Course courses = await _courseRepository.GetById(id);
+            return Ok(courses.ToDTO());
+
+        }
+
         [Route("api/educator/{educatorId}/courses")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByEducatorId(int educatorId)
@@ -48,6 +57,14 @@ namespace EducationCenter.Api.Controllers
             IEnumerable<Course> courses = await _courseRepository.GetByStudentId(studentId);
             return Ok(courses.ToDTOList());
 
+        }
+
+        [HttpPost]
+        [Route("api/course")]
+        public async Task<ActionResult> PostCourse(CourseInsertDTO course)
+        {
+            var courseId = await _courseRepository.AddCourse(course.ToEntity());
+            return Ok();
         }
 
     }
