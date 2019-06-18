@@ -29,5 +29,23 @@ namespace EducationCenter.Api.Controllers
             return Ok(notifications.ToDTOList());
         }
 
+        [HttpPost]
+        [Route("api/notification")]
+        public async Task<ActionResult> PostNotification(NotificationInsertDTO notif)
+        {
+            Notification newNotif = new Notification()
+            {
+                AdministratorId = notif.AdministratorId,
+                EducatorId = notif.EducatorId,
+                Title = notif.Title,
+                Text = notif.Text,
+                Date = notif.Date
+            };
+
+            var notifId = await _notificationRepository.AddNotification(newNotif);
+
+            return Ok();
+        }
+
     }
 }

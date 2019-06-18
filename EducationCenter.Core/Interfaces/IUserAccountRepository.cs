@@ -9,5 +9,6 @@ namespace EducationCenter.Core.Interfaces
      public interface IUserAccountRepository: IRepository<UserAccount>
     {
         Task<int> AddUserAccount(UserAccount uc);
+        bool UsernameExist(string username);
     }
 }

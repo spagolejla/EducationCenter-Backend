@@ -24,7 +24,7 @@ namespace EducationCenter.Api.Controllers
                 return BadRequest("Invalid client request");
             }
 
-            if (user.Username == "johndoe" && user.Password == "def@123")
+            if (user.Username == "johndoe" && user.Password == "test")
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

@@ -3,6 +3,7 @@ using EducationCenter.Core.Interfaces;
 using EducationCenter.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,11 @@ namespace EducationCenter.Infrastructure.Repositories
             _context.SaveChanges();
 
             return uc.Id;
+        }
+
+        public bool UsernameExist(string username)
+        {
+           return _context.UserAccounts.Any(e => e.Username == username);
         }
     }
 }
