@@ -37,5 +37,10 @@ namespace EducationCenter.Infrastructure.Repositories
         {
             return await _context.Administrators.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
+
+        public void UpdateAdmin(Administrator admin)
+        {
+            _context.SaveChanges();
+        }
     }
 }

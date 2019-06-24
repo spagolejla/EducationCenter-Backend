@@ -50,5 +50,17 @@ namespace EducationCenter.Infrastructure.Repositories
 
             return course.Id;
         }
+
+        public void UpdateCourse(Course course)
+        {
+            _context.SaveChanges();
+
+        }
+
+        public async Task<IEnumerable<CourseRate>> GetAllCourseRates(int id)
+        {
+            return await _context.CourseRates.Where(e => e.CourseId == id).Include(c => c.Course).Include(std => std.Student).ToListAsync();
+
+        }
     }
 }

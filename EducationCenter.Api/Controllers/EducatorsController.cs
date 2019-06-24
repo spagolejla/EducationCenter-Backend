@@ -31,7 +31,16 @@ namespace EducationCenter.Api.Controllers
         public async Task<ActionResult<IEnumerable<EducatorDTO>>> GetAllEducators()
         {
             IEnumerable<Educator> educators = await _educatorRepository.GetAllEducators();
-            return Ok(educators.ToDTOList());
+            IEnumerable<EducatorDTO> edcs = educators.ToDTOList();
+            foreach (var item in edcs)
+            {
+                IEnumerable<EducatorRate> rates = await _educatorRepository.GetAllEducatorRates(item.ID);
+                item.Rates = rates.ToDTOList();
+             
+                item.AvgRate = rates.Count() > 0 ? rates.Average(x => x.Rate): 0.0;
+            }
+
+            return Ok(edcs);
 
         }
 
@@ -40,33 +49,15 @@ namespace EducationCenter.Api.Controllers
         public async Task<ActionResult<EducatorDTO>> GetById(int id)
         {
             Educator educator = await _educatorRepository.GetById(id);
-            return Ok(educator.ToDTO());
+            EducatorDTO educatorDTO = educator.ToDTO();
+            IEnumerable<EducatorRate> rates = await _educatorRepository.GetAllEducatorRates(educatorDTO.ID);
+            educatorDTO.Rates = rates.ToDTOList();
+
+            educatorDTO.AvgRate = rates.Count() > 0 ? rates.Average(x => x.Rate) : 0.0;
+            return Ok(educatorDTO);
 
         }
 
-        //[HttpPost]
-        //[Route("api/educator")]
-        //public async Task<ActionResult> PostEducator(EducatorInsertDTO educator)
-        //{
-        //    UserAccount newAccount = new UserAccount(educator.Username, educator.Password, 2, educator.AvatarUrl);
-
-        //    var newAccountId = await _userAccountRepository.AddUserAccount(newAccount);
-
-        //    Educator newEducator = new Educator()
-        //    {
-        //        FirstName = educator.FirstName,
-        //        LastName = educator.LastName,
-        //        Email = educator.Email,
-        //        Phone = educator.Phone,
-        //        Title = educator.Title,
-        //        CourseFieldId = educator.CourseFieldId,
-        //        UserAccountId = newAccountId,
-        //    };
-
-        //    var edcId = await _educatorRepository.AddEducator(newEducator);
-
-        //    return Ok();
-        //}
 
 
         [HttpPost]
@@ -99,6 +90,36 @@ namespace EducationCenter.Api.Controllers
 
         
            
+        }
+
+        [HttpPut]
+        [Route("api/educator")]
+        public async Task<ActionResult> PutEducator(EducatorUpdateDTO edc)
+        {
+            var _edc = await _educatorRepository.GetById(edc.Id);
+            var _userAccount = await _userAccountRepository.GetById(edc.UserAccountId);
+
+            if (_edc == null || _userAccount == null)
+            {
+                return NotFound();
+            }
+
+            _edc.FirstName = edc.FirstName;
+            _edc.LastName = edc.LastName;
+            _edc.Email = edc.Email;
+            _edc.Phone = edc.Phone;
+            _edc.Title = edc.Title;
+
+
+            _userAccount.Username = edc.Username;
+            _userAccount.Password = edc.Password;
+            _userAccount.AvatarUrl = edc.AvatarUrl;
+            _userAccount.Active = edc.Active;
+
+            _educatorRepository.UpdateEducator(_edc);
+            _userAccountRepository.UpdateUserAccount(_userAccount);
+
+            return NoContent();
         }
 
 

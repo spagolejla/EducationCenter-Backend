@@ -61,7 +61,7 @@ namespace EducationCenter.Api.Controllers
         {
             var _payment = await _paymentRepository.GetPaymentById(payment.Id);
 
-            if (payment == null)
+            if (_payment == null)
             {
                 return NotFound();
             }

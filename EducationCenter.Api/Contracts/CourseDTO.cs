@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationCenter.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace EducationCenter.Api.Contracts
         public string Educator { get; set; }
         public string CourseField { get; set; }
         public double Price { get; set; }
-
+        public IEnumerable<CourseRateDTO> Rates { get; set; } = new List<CourseRateDTO>();
+        public double AvgRate { get; set; }
     }
 }

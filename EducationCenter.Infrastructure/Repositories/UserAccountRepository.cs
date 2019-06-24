@@ -29,6 +29,22 @@ namespace EducationCenter.Infrastructure.Repositories
             return uc.Id;
         }
 
+        public async  Task<UserAccount> GetById(int id)
+        {
+            return _context.UserAccounts.Where(x => x.Id == id).FirstOrDefault();
+
+        }
+
+        public async Task<UserAccount> GetByUsername(string username)
+        {
+            return  _context.UserAccounts.Where(x => x.Username == username).FirstOrDefault();
+        }
+
+        public void UpdateUserAccount(UserAccount uc)
+        {
+            _context.SaveChanges();
+        }
+
         public bool UsernameExist(string username)
         {
            return _context.UserAccounts.Any(e => e.Username == username);

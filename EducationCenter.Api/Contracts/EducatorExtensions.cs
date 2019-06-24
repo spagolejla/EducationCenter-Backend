@@ -23,7 +23,10 @@ namespace EducationCenter.Api.Contracts
                 Username = educator.UserAccount.Username,
                 Active = educator.UserAccount.Active,
                 AccountType = educator.UserAccount.AccountType.Type,
-                AvatarUrl = educator.UserAccount.AvatarUrl
+                AvatarUrl = educator.UserAccount.AvatarUrl,
+                Password = educator.UserAccount.Password,
+                UserAccountId = educator.UserAccountId,
+               
             };
         }
 

@@ -9,7 +9,11 @@ namespace EducationCenter.Core.Interfaces
     public interface IEducatorRepository: IRepository<Educator>
     {
         Task<IEnumerable<Educator>> GetAllEducators();
+        Task<IEnumerable<EducatorRate>> GetAllEducatorRates(int id);
+
         Task<Educator> GetById(int id);
         Task<int> AddEducator(Educator educator);
+        void UpdateEducator(Educator educator);
+
     }
 }

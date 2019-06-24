@@ -40,7 +40,7 @@ namespace EducationCenter.Api.Controllers
         public async Task<ActionResult<AdministratorDTO>> GetById(int id)
         {
             Administrator administrator = await _administratorRepository.GetById(id);
-            return Ok(administrator.ToDTO());
+            return Ok(administrator.ToUpdateDTO());
 
         }
 
@@ -76,6 +76,34 @@ namespace EducationCenter.Api.Controllers
 
 
 
+        }
+
+        [HttpPut]
+        [Route("api/administrator")]
+        public async Task<ActionResult> PutAdministrator(AdminUpdateDTO admin)
+        {
+            var _admin = await _administratorRepository.GetById(admin.Id);
+            var _userAccount = await _userAccountRepository.GetById(admin.UserAccountId);
+
+            if (_admin == null || _userAccount == null)
+            {
+                return NotFound();
+            }
+
+            _admin.FirstName = admin.FirstName;
+            _admin.LastName = admin.LastName;
+            _admin.Email = admin.Email;
+            _admin.Phone = admin.Phone;
+
+            _userAccount.Username = admin.Username;
+            _userAccount.Password = admin.Password;
+            _userAccount.AvatarUrl = admin.AvatarUrl;
+            _userAccount.Active = admin.Active;
+
+            _administratorRepository.UpdateAdmin(_admin);
+            _userAccountRepository.UpdateUserAccount(_userAccount);
+
+            return NoContent();
         }
 
 

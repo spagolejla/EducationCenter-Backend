@@ -35,12 +35,19 @@ namespace EducationCenter.Api.Controllers
         {
             Notification newNotif = new Notification()
             {
-                AdministratorId = notif.AdministratorId,
-                EducatorId = notif.EducatorId,
                 Title = notif.Title,
                 Text = notif.Text,
-                Date = notif.Date
+                Date = DateTime.Now
             };
+
+            if (notif.IsAdmin)
+            {
+                newNotif.AdministratorId = notif.CreatorId;
+            }
+            else
+            {
+                newNotif.EducatorId = notif.CreatorId;
+            }
 
             var notifId = await _notificationRepository.AddNotification(newNotif);
 

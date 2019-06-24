@@ -36,9 +36,13 @@ namespace EducationCenter.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<CourseDTO>> GetById(int id)
         {
-            Course courses = await _courseRepository.GetById(id);
-            return Ok(courses.ToDTO());
+            Course course = await _courseRepository.GetById(id);
+            CourseDTO courseDTO = course.ToDTO();
+            IEnumerable<CourseRate> rates = await _courseRepository.GetAllCourseRates(courseDTO.ID);
+            courseDTO.Rates = rates.ToDTOList();
 
+            courseDTO.AvgRate = rates.Count() > 0 ? rates.Average(x => x.Rate) : 0.0;
+            return Ok(courseDTO);
         }
 
         [Route("api/educator/{educatorId}/courses")]
@@ -65,6 +69,34 @@ namespace EducationCenter.Api.Controllers
         {
             var courseId = await _courseRepository.AddCourse(course.ToEntity());
             return Ok();
+        }
+
+
+
+        [HttpPut]
+        [Route("api/course")]
+        public async Task<ActionResult> PutCourse(CourseUpdateDTO cour)
+        {
+            var _cour = await _courseRepository.GetById(cour.Id);
+         
+
+            if (_cour == null )
+            {
+                return NotFound();
+            }
+
+            _cour.Name = cour.Name;
+            _cour.Description = cour.Description;
+            _cour.NumberOfLectures = cour.NumberOfLectures;
+            _cour.Price = cour.Price;
+            _cour.StartDate = cour.StartDate;
+            _cour.ClassStartTime = cour.ClassStartTime;
+            _cour.DaysOfWeek = cour.DaysOfWeek;
+
+
+            _courseRepository.UpdateCourse(_cour);
+
+            return NoContent();
         }
 
     }

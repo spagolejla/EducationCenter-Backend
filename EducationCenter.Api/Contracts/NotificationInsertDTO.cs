@@ -9,9 +9,8 @@ namespace EducationCenter.Api.Contracts
     {
         public string Title { get; set; }
         public string Text { get; set; }
-        public DateTime  Date { get; set; }
-        public int? EducatorId { get; set; }
-        public int? AdministratorId { get; set; }
-
+  
+        public int CreatorId { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

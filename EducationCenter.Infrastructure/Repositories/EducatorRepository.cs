@@ -28,6 +28,11 @@ namespace EducationCenter.Infrastructure.Repositories
             return educator.Id;
         }
 
+        public async Task<IEnumerable<EducatorRate>> GetAllEducatorRates(int id)
+        {
+            return await _context.EducatorRates.Where(e => e.EducatorId == id).Include(edc => edc.Educator).Include(std => std.Student).ToListAsync();
+        }
+
         public async Task<IEnumerable<Educator>> GetAllEducators()
         {
             return await _context.Educators.Include(cf=>cf.CourseField).Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).ToListAsync();
@@ -39,6 +44,10 @@ namespace EducationCenter.Infrastructure.Repositories
             return await _context.Educators.Include(cf => cf.CourseField).Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
+        public void UpdateEducator(Educator educator)
+        {
+            _context.SaveChanges();
+        }
     }
     
 }

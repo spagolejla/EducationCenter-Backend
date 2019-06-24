@@ -11,8 +11,11 @@ namespace EducationCenter.Core.Interfaces
         Task<IEnumerable<Course>> GetAllCourses();
         Task<IEnumerable<Course>> GetByEducatorId(int id);
         Task<IEnumerable<Course>> GetByStudentId(int id);
+        Task<IEnumerable<CourseRate>> GetAllCourseRates(int id);
+
         Task<Course> GetById(int id);
         Task<int> AddCourse(Course course);
+        void UpdateCourse(Course course);
 
     }
 }

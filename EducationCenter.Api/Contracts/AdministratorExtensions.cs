@@ -24,6 +24,23 @@ namespace EducationCenter.Api.Contracts
             };
         }
 
+        public static AdminUpdateDTO ToUpdateDTO(this Administrator administrator)
+        {
+            return new AdminUpdateDTO()
+            {
+                Id = administrator.Id,
+                FirstName = administrator.FirstName,
+                LastName = administrator.LastName,
+                Email = administrator.Email,
+                Phone = administrator.Phone,
+                Username = administrator.UserAccount.Username,
+                Password = administrator.UserAccount.Password,
+                Active = administrator.UserAccount.Active,
+                AvatarUrl = administrator.UserAccount.AvatarUrl,
+                UserAccountId = administrator.UserAccountId
+            };
+        }
+
         public static IEnumerable<AdministratorDTO> ToDTOList(this IEnumerable<Administrator> administrators)
         {
             var administratorsDTO = new List<AdministratorDTO>();

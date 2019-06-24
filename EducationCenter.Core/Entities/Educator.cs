@@ -38,6 +38,7 @@ namespace EducationCenter.Core.Entities
         [ForeignKey(nameof(CourseField))]
         public int CourseFieldId { get; set; }
 
+
         public Educator(string firstName, string lastName, string email, string phone, int userAccountId, string title, int courseFieldId)
         {
             this.FirstName = firstName;

@@ -30,5 +30,7 @@ namespace EducationCenter.Api.Controllers
         {
             return _userAccountRepository.UsernameExist(username);
         }
+
+      
     }
 }
