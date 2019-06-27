@@ -28,5 +28,11 @@ namespace EducationCenter.Infrastructure.Repositories
         {
             return _context.Students.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
+
+        public Task<Student> GetByUserAccountId(int id)
+        {
+            return _context.Students.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.UserAccountId == id).FirstOrDefaultAsync();
+
+        }
     }
 }

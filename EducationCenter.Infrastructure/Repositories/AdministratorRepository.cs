@@ -38,6 +38,12 @@ namespace EducationCenter.Infrastructure.Repositories
             return await _context.Administrators.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
+        public async Task<Administrator> GetByUserAccountId(int id)
+        {
+            return await _context.Administrators.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.UserAccountId == id).FirstOrDefaultAsync();
+
+        }
+
         public void UpdateAdmin(Administrator admin)
         {
             _context.SaveChanges();

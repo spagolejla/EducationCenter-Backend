@@ -44,6 +44,12 @@ namespace EducationCenter.Infrastructure.Repositories
             return await _context.Educators.Include(cf => cf.CourseField).Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
+        public async Task<Educator> GetByUserAccountId(int id)
+        {
+            return await _context.Educators.Include(cf => cf.CourseField).Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.UserAccountId == id).FirstOrDefaultAsync();
+
+        }
+
         public void UpdateEducator(Educator educator)
         {
             _context.SaveChanges();

@@ -11,6 +11,8 @@ namespace EducationCenter.Core.Interfaces
     {
         Task<IEnumerable<Student>> GetAllStudents();
         Task<Student> GetById(int id);
+        Task<Student> GetByUserAccountId(int id);
+
 
     }
 }

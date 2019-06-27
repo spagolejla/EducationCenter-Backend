@@ -29,6 +29,21 @@ namespace EducationCenter.Api.Controllers
             return Ok(notifications.ToDTOList());
         }
 
+
+        [HttpGet]
+        [Route("api/notification/{id}")]
+        public async Task<ActionResult<Notification>> GetNotificationById(int id)
+        {
+            Notification notification = await _notificationRepository.GetNotificationById(id);
+
+            if (notification == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(notification);
+        }
+
         [HttpPost]
         [Route("api/notification")]
         public async Task<ActionResult> PostNotification(NotificationInsertDTO notif)
@@ -52,6 +67,26 @@ namespace EducationCenter.Api.Controllers
             var notifId = await _notificationRepository.AddNotification(newNotif);
 
             return Ok();
+        }
+
+        [HttpPut]
+        [Route("api/notification")]
+        public async Task<ActionResult> PutPayment(Notification notification)
+        {
+            var _notification = await _notificationRepository.GetNotificationById(notification.Id);
+
+            if (_notification == null)
+            {
+                return NotFound();
+            }
+
+            _notification.Title = notification.Title;
+            _notification.Text = notification.Text;
+           
+
+            _notificationRepository.UpdateNotification(notification);
+
+            return NoContent();
         }
 
     }

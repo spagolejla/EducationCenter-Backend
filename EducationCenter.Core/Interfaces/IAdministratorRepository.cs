@@ -10,6 +10,8 @@ namespace EducationCenter.Core.Interfaces
     {
         Task<IEnumerable<Administrator>> GetAllAdministrators();
         Task<Administrator> GetById(int id);
+        Task<Administrator> GetByUserAccountId(int id);
+
         Task<int> AddAdmin(Administrator admin);
         void UpdateAdmin(Administrator admin);
 
