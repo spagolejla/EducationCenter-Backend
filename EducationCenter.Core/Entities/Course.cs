@@ -20,6 +20,7 @@ namespace EducationCenter.Core.Entities
             EducatorId = educatorId;
             CourseFieldId = courseFieldId;
             ClassStartTime = classStartTime;
+            Active = true;
         }
 
         public string Name { get; set; }
@@ -46,9 +47,9 @@ namespace EducationCenter.Core.Entities
 
         public double Price { get; set; }
 
+        public bool Active { get; set; }
 
-       
 
-      
+
     }
 }

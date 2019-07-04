@@ -19,5 +19,7 @@ namespace EducationCenter.Core.Entities
         public string Description { get; set; }
 
         public bool Active { get; set; }
+
+        public int MaxCandidatesNumber { get; set; }
     }
 }

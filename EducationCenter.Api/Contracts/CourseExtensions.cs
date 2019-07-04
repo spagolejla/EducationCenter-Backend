@@ -23,7 +23,8 @@ namespace EducationCenter.Api.Contracts
                 Description = course.Description,
                 NumberOfLectures = course.NumberOfLectures,
                 Price = course.Price,
-                StartDate = course.StartDate
+                StartDate = course.StartDate,
+                Active =  course.Active
 
             };
         }

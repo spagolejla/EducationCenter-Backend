@@ -21,5 +21,6 @@ namespace EducationCenter.Api.Contracts
         public double Price { get; set; }
         public IEnumerable<CourseRateDTO> Rates { get; set; } = new List<CourseRateDTO>();
         public double AvgRate { get; set; }
+        public bool Active { get; set; }
     }
 }
