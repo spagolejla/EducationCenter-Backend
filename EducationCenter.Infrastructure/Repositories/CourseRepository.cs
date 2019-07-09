@@ -62,5 +62,12 @@ namespace EducationCenter.Infrastructure.Repositories
             return await _context.CourseRates.Where(e => e.CourseId == id).Include(c => c.Course).Include(std => std.Student).ToListAsync();
 
         }
+
+        public async Task<int> AddStudents(List<StudentCourse> sc)
+        {
+            _context.StudentCourses.AddRangeAsync(sc);
+            _context.SaveChanges();
+            return 1; // ?????
+        }
     }
 }

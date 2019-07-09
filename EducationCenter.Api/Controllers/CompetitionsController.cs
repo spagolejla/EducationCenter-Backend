@@ -40,7 +40,7 @@ namespace EducationCenter.Api.Controllers
                     item.CurrentCandidatesNumber = applications.Count();
                 }
             }
-            return Ok(competitions);
+            return Ok(competitionsDTO);
 
         }
 
@@ -78,7 +78,27 @@ namespace EducationCenter.Api.Controllers
                     item.CurrentCandidatesNumber = applications.Count();
                 }
             }
-            return Ok(competitions);
+            return Ok(competitionsDTO);
+
+        }
+
+        [Route("api/educator/active/competitions/{educatorId}")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CompetitionDTO>>> GetActiveCompetitionsByEducator(int educatorId)
+        {
+            IEnumerable<Competition> competitions = await _competitionRepositry.GetActiveCompetitions(educatorId);
+            IEnumerable<CompetitionDTO> competitionsDTO = competitions.ToDTOList();
+
+            foreach (var item in competitionsDTO)
+            {
+                IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(item.Id);
+                if (applications.Count() != 0)
+                {
+                    item.Applications = applications.ToDTOList();
+                    item.CurrentCandidatesNumber = applications.Count();
+                }
+            }
+            return Ok(competitionsDTO);
 
         }
 
@@ -99,7 +119,7 @@ namespace EducationCenter.Api.Controllers
                 }
                
             }
-            return Ok(competitions);
+            return Ok(competitionsDTO);
 
         }
 

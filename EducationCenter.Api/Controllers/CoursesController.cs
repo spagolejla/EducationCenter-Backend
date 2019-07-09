@@ -17,10 +17,13 @@ namespace EducationCenter.Api.Controllers
     public class CoursesController : ControllerBase
     {
         private readonly ICourseRepository _courseRepository;
+        private readonly ICompetitionRepository _competitionRepository;
 
-        public CoursesController(ICourseRepository courseRepository)
+
+        public CoursesController(ICourseRepository courseRepository, ICompetitionRepository competitionRepository)
         {
             _courseRepository = courseRepository;
+            _competitionRepository = competitionRepository;
         }
 
         [Route("api/courses")]
@@ -69,6 +72,41 @@ namespace EducationCenter.Api.Controllers
         {
             var courseId = await _courseRepository.AddCourse(course.ToEntity());
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("api/course/addStudents")]
+        public async Task<ActionResult> AddStudents(List<CompetitionApplicationDTO> applications)
+        {
+            List<StudentCourse> students = new List<StudentCourse>();
+            int competitionId = 0;
+            
+            foreach (var item in applications)
+            {
+                StudentCourse student = new StudentCourse()
+                {
+                    CourseId = item.CourseId,
+                    StudentId = item.StudentId,
+                    Mark = 0,
+                    
+                };
+                competitionId = item.CompetitionId;
+                students.Add(student);
+            }
+            var succes = await _courseRepository.AddStudents(students);
+            if (succes == 1)
+            {
+                Competition competition = await _competitionRepository.GetById(competitionId);
+                if (competition != null)
+                {
+                    competition.Active = false;
+                }
+
+                _competitionRepository.UpdateCompetition(competition);
+
+                return Ok();
+            }
+            return BadRequest();
         }
 
 

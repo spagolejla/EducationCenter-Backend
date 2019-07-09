@@ -15,6 +15,7 @@ namespace EducationCenter.Core.Entities
         public Course Course { get; set; }
         [ForeignKey(nameof(Course))]
         public int CourseId { get; set; }
-        
+
+        public int Mark { get; set; }
     }
 }

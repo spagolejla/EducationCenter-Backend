@@ -10,6 +10,8 @@ namespace EducationCenter.Core.Interfaces
     {
         Task<IEnumerable<Competition>> GetAllCompetitions();
         Task<IEnumerable<Competition>> GetByEducatorId(int id);
+        Task<IEnumerable<Competition>> GetActiveCompetitions(int id);
+
         Task<IEnumerable<Competition>> GetByStudentId(int id);
         Task<IEnumerable<CompetitionApplication>> GetAllApplications(int id);
 
@@ -17,5 +19,7 @@ namespace EducationCenter.Core.Interfaces
         Task<Competition> GetById(int id);
         Task<int> AddCompetition(Competition competition);
         void UpdateCompetition(Competition competition);
+        void DeactivateCompetition(Competition competition);
+
     }
 }

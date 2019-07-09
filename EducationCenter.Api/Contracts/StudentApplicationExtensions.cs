@@ -18,7 +18,8 @@ namespace EducationCenter.Api.Contracts
                 CourseName = application.Competition.Course.Name,
                 Date = application.Date,
                 Student = application.Student.FirstName + " " + application.Student.LastName,
-                StudentId = application.StudentId
+                StudentId = application.StudentId,
+                Points = application.Student.Points
 
             };
         }

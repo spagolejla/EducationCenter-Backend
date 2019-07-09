@@ -17,5 +17,8 @@ namespace EducationCenter.Core.Interfaces
         Task<int> AddCourse(Course course);
         void UpdateCourse(Course course);
 
+        Task<int> AddStudents (List<StudentCourse> sc);
+
+
     }
 }

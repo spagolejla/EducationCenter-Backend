@@ -19,5 +19,7 @@ namespace EducationCenter.Core.Entities
 
         public DateTime Date { get; set; }
 
+   
+
     }
 }

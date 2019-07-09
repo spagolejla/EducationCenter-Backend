@@ -15,6 +15,7 @@ namespace EducationCenter.Api.Contracts
         public int CourseId  { get; set; }
         public int CompetitionId { get; set; }
 
+        public int Points { get; set; }
 
         public DateTime Date { get; set; }
     }

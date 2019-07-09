@@ -21,6 +21,8 @@ namespace EducationCenter.Infrastructure.Shared
             services.AddScoped<ICourseFieldRepository, CourseFieldRepository>();
             services.AddScoped<IUserAccountRepository, UserAccountRepository>();
             services.AddScoped<ICompetitionRepository, CompetitionRepository>();
+         
+
 
 
 

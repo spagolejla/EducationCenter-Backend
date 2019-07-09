@@ -27,20 +27,31 @@ namespace EducationCenter.Infrastructure.Repositories
             return competition.Id;
         }
 
+        public void DeactivateCompetition(Competition competition)
+        {
+            _context.SaveChanges();
+        }
+
+        public async Task<IEnumerable<Competition>> GetActiveCompetitions(int id)
+        {
+            return await _context.Competitions.Where(x => x.Course.EducatorId == id && x.Active == true).Include(c => c.Course).OrderBy(d=>d.StartDate).ToListAsync();
+
+        }
+
         public async Task<IEnumerable<CompetitionApplication>> GetAllApplications(int id)
         {
-            return await _context.CompetitionApplications.Where(x => x.CompetitionId == id).Include(c => c.Competition).Include(s => s.Student).ToListAsync();
+            return await _context.CompetitionApplications.Where(x => x.CompetitionId == id).Include(c => c.Competition).Include(s => s.Student).OrderBy(d=>d.Date).ToListAsync();
         }
 
         public async Task<IEnumerable<Competition>> GetAllCompetitions()
         {
-            return await _context.Competitions.Include(c => c.Course).ToListAsync();
+            return await _context.Competitions.Include(c => c.Course).OrderBy(d => d.StartDate).ToListAsync();
 
         }
 
         public async Task<IEnumerable<Competition>> GetByEducatorId(int id)
         {
-            return await _context.Competitions.Where(x => x.Course.EducatorId == id).Include(c => c.Course).ToListAsync();
+            return await _context.Competitions.Where(x => x.Course.EducatorId == id).Include(c => c.Course).OrderBy(d => d.StartDate).ToListAsync();
 
         }
 
@@ -55,7 +66,7 @@ namespace EducationCenter.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public void UpdateCompetition(Competition course)
+        public void UpdateCompetition(Competition competition)
         {
             _context.SaveChanges();
         }
