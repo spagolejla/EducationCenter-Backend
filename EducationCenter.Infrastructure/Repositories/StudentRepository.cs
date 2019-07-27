@@ -19,9 +19,28 @@ namespace EducationCenter.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<int> AddStudentAttendance(List<StudentAttendance> sas)
+        {
+            _context.StudentAttendances.AddRangeAsync(sas);
+            _context.SaveChanges();
+            return 1;
+        }
+
         public async Task<IEnumerable<Student>> GetAllStudents()
         {
            return await _context.Students.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).ToListAsync();
+        }
+
+        public async Task<List<Student>> GetByCourseId(int id)
+        {
+            List<StudentCourse> stds = await  _context.StudentCourses.Where(x => x.CourseId == id).Include(s=>s.Student).ThenInclude(ua=>ua.UserAccount).ThenInclude(at => at.AccountType).ToListAsync();
+            List<Student> students = new List<Student>();
+            foreach (var item in stds)
+            {
+                students.Add(item.Student);
+            }
+
+            return students;
         }
 
         public Task<Student> GetById(int id)

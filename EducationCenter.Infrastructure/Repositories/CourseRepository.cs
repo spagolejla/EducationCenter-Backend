@@ -69,5 +69,41 @@ namespace EducationCenter.Infrastructure.Repositories
             _context.SaveChanges();
             return 1; // ?????
         }
+
+        public async Task<IEnumerable<Course>> GetActiveCoursesByEducatorId(int id)
+        {
+            return await _context.Courses.Where(c=>c.Active == true).Where(x=>x.EducatorId == id).Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).OrderByDescending(d=>d.StartDate).ToListAsync();
+
+        }
+
+        public async Task<IEnumerable<CourseClass>> GetAllCourseClasses(int id)
+        {
+            return await _context.CourseClasses.Where(x => x.CourseId == id).ToListAsync();
+        }
+
+        public async  Task<int> AddClass(CourseClass cc)
+        {
+            _context.CourseClasses.AddAsync(cc);
+            _context.SaveChanges();
+            return cc.Id;
+        }
+
+        public async Task<List<StudentCourse>> GetStudentCoursesByCourseid(int id)
+        {
+            return await _context.StudentCourses.Where(x => x.CourseId == id).ToListAsync();
+        }
+
+        public double GetStudentAttendance(int courseId, int studentId)
+        {
+            double attendance;
+
+           double numberOfAttendance =  _context.StudentAttendances.Include(sc => sc.StudentCourse).Where(x => x.StudentCourse.CourseId == courseId).Where(s => s.StudentCourse.StudentId == studentId).Where(pr=> pr.Present == true).Count(p => p.Present);
+            double numberOfClasses = _context.Courses.Where(x => x.Id == courseId).FirstOrDefault().NumberOfLectures;
+
+            attendance = Convert.ToDouble(Convert.ToDouble(numberOfAttendance / numberOfClasses )* 100);
+
+            return attendance;
+
+        }
     }
 }
