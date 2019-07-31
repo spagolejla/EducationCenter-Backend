@@ -17,6 +17,10 @@ namespace EducationCenter.Api.Contracts
         public int MaxCandidatesNumber { get; set; }
         public int CurrentCandidatesNumber { get; set; }
         public IEnumerable<CompetitionApplicationDTO> Applications { get; set; } = new List<CompetitionApplicationDTO>();
+        public EducatorDTO Educator { get; set; }
+        public int CourseId { get; set; }
+        public int LecturesNumber { get; set; }
+
 
     }
 }

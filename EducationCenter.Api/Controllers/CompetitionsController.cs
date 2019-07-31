@@ -17,11 +17,14 @@ namespace EducationCenter.Api.Controllers
     public class CompetitionsController : ControllerBase
     {
         private readonly ICompetitionRepository _competitionRepositry;
+        private readonly IEducatorRepository _educatorRepository;
 
 
-        public CompetitionsController(ICompetitionRepository competitionRepositry)
+
+        public CompetitionsController(ICompetitionRepository competitionRepositry, IEducatorRepository educatorRepository)
         {
             _competitionRepositry = competitionRepositry;
+            _educatorRepository = educatorRepository;
         }
 
         [Route("api/competitions")]
@@ -51,15 +54,42 @@ namespace EducationCenter.Api.Controllers
             Competition competition = await _competitionRepositry.GetById(id);
             CompetitionDTO competitionDTO = competition.ToDTO();
             IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(competitionDTO.Id);
+            Educator edc = await _educatorRepository.GetByCourseId(competitionDTO.CourseId);
+
             if (applications.Count() != 0)
             {
                 competitionDTO.Applications = applications.ToDTOList();
 
                 competitionDTO.CurrentCandidatesNumber = applications.Count();
+
+                competitionDTO.Educator = edc.ToDTO();
             }
           
 
             return Ok(competitionDTO);
+        }
+        [Route("api/competition/details/{id}")]
+        [HttpGet]
+        public async Task<ActionResult<CompetitionInsertDTO>> GetDetailsById(int id)
+        {
+            Competition competition = await _competitionRepositry.GetById(id);
+            CompetitionInsertDTO comp = new CompetitionInsertDTO()
+            {
+                Id = competition.Id,
+                Active = competition.Active,
+                CourseId = competition.CourseId,
+                Description = competition.Description,
+                EndDate = competition.EndDate,
+                MaxCandidates = competition.MaxCandidatesNumber,
+                Title = competition.Title
+            };
+          
+          
+
+           
+
+
+            return Ok(comp);
         }
 
         [Route("api/educator/competitions/{educatorId}")]
@@ -69,6 +99,10 @@ namespace EducationCenter.Api.Controllers
             IEnumerable<Competition> competitions = await _competitionRepositry.GetByEducatorId(educatorId);
             IEnumerable<CompetitionDTO> competitionsDTO = competitions.ToDTOList();
 
+
+            Educator edc = await _educatorRepository.GetByCourseId(competitionsDTO.FirstOrDefault().CourseId);
+
+
             foreach (var item in competitionsDTO)
             {
                 IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(item.Id);
@@ -76,6 +110,7 @@ namespace EducationCenter.Api.Controllers
                 {
                     item.Applications = applications.ToDTOList();
                     item.CurrentCandidatesNumber = applications.Count();
+                    item.Educator = edc.ToDTO();
                 }
             }
             return Ok(competitionsDTO);
@@ -88,7 +123,7 @@ namespace EducationCenter.Api.Controllers
         {
             IEnumerable<Competition> competitions = await _competitionRepositry.GetActiveCompetitions(educatorId);
             IEnumerable<CompetitionDTO> competitionsDTO = competitions.ToDTOList();
-
+            Educator edc = await _educatorRepository.GetByCourseId(competitionsDTO.FirstOrDefault().CourseId);
             foreach (var item in competitionsDTO)
             {
                 IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(item.Id);
@@ -96,6 +131,7 @@ namespace EducationCenter.Api.Controllers
                 {
                     item.Applications = applications.ToDTOList();
                     item.CurrentCandidatesNumber = applications.Count();
+                    item.Educator = edc.ToDTO();
                 }
             }
             return Ok(competitionsDTO);
@@ -121,6 +157,53 @@ namespace EducationCenter.Api.Controllers
             }
             return Ok(competitionsDTO);
 
+        }
+
+
+        [HttpPost]
+        [Route("api/competition")]
+        public async Task<ActionResult> PostCompetition(CompetitionInsertDTO competition)
+        {
+            Competition newCompetition = new Competition()
+            {
+                Active = true,
+                CourseId = competition.CourseId,
+                Description = competition.Description,
+                Title = competition.Title,
+                MaxCandidatesNumber = competition.MaxCandidates,
+                EndDate = competition.EndDate,
+                StartDate = DateTime.Now
+            };
+
+            var competitionId = await _competitionRepositry.AddCompetition(newCompetition);
+            return Ok();
+        }
+
+
+        [HttpPut]
+        [Route("api/competition")]
+        public async Task<ActionResult> PutCompetition(CompetitionInsertDTO comp)
+        {
+            var _comp = await _competitionRepositry.GetById(comp.Id);
+
+
+            if (_comp == null)
+            {
+                return NotFound();
+            }
+
+            _comp.Title = comp.Title;
+            _comp.Description = comp.Description;
+            _comp.MaxCandidatesNumber = comp.MaxCandidates;
+            _comp.EndDate = comp.EndDate;
+            _comp.Active = comp.Active;
+
+            _competitionRepositry.UpdateCompetition(_comp);
+          
+
+            
+
+            return NoContent();
         }
 
     }

@@ -19,8 +19,10 @@ namespace EducationCenter.Api.Contracts
                Description = competition.Description,
                EndDate = competition.EndDate,
                StartDate = competition.StartDate,
-               MaxCandidatesNumber = competition.MaxCandidatesNumber
-              
+               MaxCandidatesNumber = competition.MaxCandidatesNumber,
+               CourseId = competition.Course.Id,
+                LecturesNumber = competition.Course.NumberOfLectures
+
 
             };
         }

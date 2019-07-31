@@ -12,6 +12,8 @@ namespace EducationCenter.Core.Interfaces
         Task<IEnumerable<EducatorRate>> GetAllEducatorRates(int id);
 
         Task<Educator> GetById(int id);
+        Task<Educator> GetByCourseId(int id);
+
         Task<Educator> GetByUserAccountId(int id);
 
         Task<int> AddEducator(Educator educator);

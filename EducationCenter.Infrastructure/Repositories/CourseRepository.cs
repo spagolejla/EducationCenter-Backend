@@ -105,5 +105,23 @@ namespace EducationCenter.Infrastructure.Repositories
             return attendance;
 
         }
+
+        public async Task<IEnumerable<Course>> GetCoursesWithoutCompetition(int id)
+        {
+            List<Course> courses = await _context.Courses.Where(x => x.EducatorId == id).Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).ToListAsync();
+            List<Course> filteredCourses = new List<Course>();
+            var count = courses.Count();
+            for (int i = 0; i < count; i++)
+            {
+                var competition = _context.Competitions.Where(x => x.CourseId == courses[i].Id).FirstOrDefault();
+                if(competition == null)
+                {
+                    filteredCourses.Add(courses[i]);
+                }
+            }
+
+            return filteredCourses;
+
+        }
     }
 }

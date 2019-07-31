@@ -39,6 +39,13 @@ namespace EducationCenter.Infrastructure.Repositories
 
         }
 
+        public async Task<Educator> GetByCourseId(int id)
+        {
+            var EducatorId = _context.Courses.Where(x => x.Id == id).FirstOrDefault().EducatorId;
+            return await _context.Educators.Include(cf => cf.CourseField).Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.Id == EducatorId).FirstOrDefaultAsync();
+
+        }
+
         public async Task<Educator> GetById(int id)
         {
             return await _context.Educators.Include(cf => cf.CourseField).Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.Id == id).FirstOrDefaultAsync();

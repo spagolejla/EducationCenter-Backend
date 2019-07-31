@@ -106,6 +106,16 @@ namespace EducationCenter.Api.Controllers
 
         }
 
+
+        [Route("api/educator/{educatorId}/courses/forCompetition")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesForCompetiton(int educatorId)
+        {
+            IEnumerable<Course> courses = await _courseRepository.GetCoursesWithoutCompetition(educatorId);
+            return Ok(courses.ToDTOList());
+
+        }
+
         [Route("api/educator/{educatorId}/courses/active")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CourseDTO>>> GetActiveCoursesByEducatorId(int educatorId)
