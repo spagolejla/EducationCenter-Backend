@@ -19,6 +19,15 @@ namespace EducationCenter.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<int> AddStudent(Student student)
+        {
+            var s = _context.Students.Add(student);
+
+            _context.SaveChanges();
+
+            return student.Id;
+        }
+
         public async Task<int> AddStudentAttendance(List<StudentAttendance> sas)
         {
             _context.StudentAttendances.AddRangeAsync(sas);
@@ -53,5 +62,11 @@ namespace EducationCenter.Infrastructure.Repositories
             return _context.Students.Include(ua => ua.UserAccount).ThenInclude(at => at.AccountType).Where(x => x.UserAccountId == id).FirstOrDefaultAsync();
 
         }
+
+        public void UpdateStudent(Student student)
+        {
+            _context.SaveChanges();
+        }
+       
     }
 }

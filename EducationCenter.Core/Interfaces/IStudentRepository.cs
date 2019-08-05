@@ -15,6 +15,9 @@ namespace EducationCenter.Core.Interfaces
         Task<Student> GetById(int id);
         Task<Student> GetByUserAccountId(int id);
         Task<int> AddStudentAttendance(List<StudentAttendance> sas);
+        Task<int> AddStudent(Student student);
+        void UpdateStudent(Student student);
+
 
 
 

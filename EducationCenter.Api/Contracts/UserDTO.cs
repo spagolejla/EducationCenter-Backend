@@ -19,6 +19,9 @@ namespace EducationCenter.Api.Contracts
         public string AccountType { get; set; }
 
         public int UserAccountId { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+
 
 
     }

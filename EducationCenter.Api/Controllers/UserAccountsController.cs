@@ -70,7 +70,10 @@ namespace EducationCenter.Api.Controllers
                             AvatarUrl = userAccount.AvatarUrl,
                             AccountTypeId = userAccount.AccountTypeId,
                             AccountType = userAccount.AccountType.Type,
-                            UserAccountId = userAccount.Id
+                            UserAccountId = userAccount.Id,
+                            Email = userAdmin.Email,
+                            Phone = userAdmin.Phone
+
                         };
                         return Ok(userDTO);
                     }
@@ -96,7 +99,9 @@ namespace EducationCenter.Api.Controllers
                             AvatarUrl = userAccount.AvatarUrl,
                             AccountTypeId = userAccount.AccountTypeId,
                             AccountType = userAccount.AccountType.Type,
-                            UserAccountId = userAccount.Id
+                            UserAccountId = userAccount.Id,
+                            Phone = userEducator.Phone,
+                            Email = userEducator.Email
                         };
                         return Ok(userDTO);
                     }
@@ -122,7 +127,9 @@ namespace EducationCenter.Api.Controllers
                             AvatarUrl = userAccount.AvatarUrl,
                             AccountTypeId = userAccount.AccountTypeId,
                             AccountType = userAccount.AccountType.Type,
-                            UserAccountId = userAccount.Id
+                            UserAccountId = userAccount.Id,
+                            Email = userStudent.Email,
+                            Phone = userStudent.Phone
                         };
                         return Ok(userDTO);
                     }
@@ -139,7 +146,84 @@ namespace EducationCenter.Api.Controllers
 
 
         }
-        
+
+        [HttpPut]
+        [Route("api/userAccount")]
+        public async Task<ActionResult> PutUserAccount(UserDTO user)
+        {
+            UserAccount userAccount = await _userAccountRepository.GetByUsername(user.Username);
+            if (userAccount != null)
+            {
+                if (userAccount.AccountTypeId == 1)
+                {
+                    Administrator userAdmin = await _administratorRepository.GetByUserAccountId(userAccount.Id);
+
+                    if (userAdmin != null)
+                    {
+                        userAccount.Password = user.Password;
+                        userAccount.AvatarUrl = user.AvatarUrl;
+                        userAdmin.FirstName = user.FirstName;
+                        userAdmin.LastName = user.LastName;
+                        userAdmin.Email = user.Email;
+                        userAdmin.Phone = user.Phone;
+
+                        _userAccountRepository.UpdateUserAccount(userAccount);
+                        _administratorRepository.UpdateAdmin(userAdmin);
+
+                        return NoContent();
+
+                    }
+                }
+                else if (userAccount.AccountTypeId == 2)
+                {
+
+                    Educator userEducator = await _educatorRepository.GetByUserAccountId(userAccount.Id);
+
+                    if (userEducator != null)
+                    {
+                        userAccount.Password = user.Password;
+                        userAccount.AvatarUrl = user.AvatarUrl;
+                        userEducator.FirstName = user.FirstName;
+                        userEducator.LastName = user.LastName;
+                        userEducator.Email = user.Email;
+                        userEducator.Phone = user.Phone;
+
+                        _userAccountRepository.UpdateUserAccount(userAccount);
+                        _educatorRepository.UpdateEducator(userEducator);
+
+                        return NoContent();
+                    }
+
+                }
+                else if (userAccount.AccountTypeId == 3)
+                {
+                    Student userStudent = await _studentRepository.GetByUserAccountId(userAccount.Id);
+
+                    if (userStudent != null)
+                    {
+                        userAccount.Password = user.Password;
+                        userAccount.AvatarUrl = user.AvatarUrl;
+                        userStudent.FirstName = user.FirstName;
+                        userStudent.LastName = user.LastName;
+                        userStudent.Email = user.Email;
+                        userStudent.Phone = user.Phone;
+
+                        _userAccountRepository.UpdateUserAccount(userAccount);
+                        _studentRepository.UpdateStudent(userStudent);
+
+                        return NoContent();
+                    }
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+
+
+            return NotFound();
+        }
 
 
     }

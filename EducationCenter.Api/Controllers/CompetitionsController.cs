@@ -56,13 +56,14 @@ namespace EducationCenter.Api.Controllers
             IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(competitionDTO.Id);
             Educator edc = await _educatorRepository.GetByCourseId(competitionDTO.CourseId);
 
+            competitionDTO.Educator = edc.ToDTO();
             if (applications.Count() != 0)
             {
                 competitionDTO.Applications = applications.ToDTOList();
 
                 competitionDTO.CurrentCandidatesNumber = applications.Count();
 
-                competitionDTO.Educator = edc.ToDTO();
+              
             }
           
 
@@ -105,12 +106,13 @@ namespace EducationCenter.Api.Controllers
 
             foreach (var item in competitionsDTO)
             {
+                item.Educator = edc.ToDTO();
                 IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(item.Id);
                 if (applications.Count() != 0)
                 {
                     item.Applications = applications.ToDTOList();
                     item.CurrentCandidatesNumber = applications.Count();
-                    item.Educator = edc.ToDTO();
+                   
                 }
             }
             return Ok(competitionsDTO);
@@ -126,12 +128,13 @@ namespace EducationCenter.Api.Controllers
             Educator edc = await _educatorRepository.GetByCourseId(competitionsDTO.FirstOrDefault().CourseId);
             foreach (var item in competitionsDTO)
             {
+                item.Educator = edc.ToDTO();
                 IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(item.Id);
                 if (applications.Count() != 0)
                 {
                     item.Applications = applications.ToDTOList();
                     item.CurrentCandidatesNumber = applications.Count();
-                    item.Educator = edc.ToDTO();
+                   
                 }
             }
             return Ok(competitionsDTO);
