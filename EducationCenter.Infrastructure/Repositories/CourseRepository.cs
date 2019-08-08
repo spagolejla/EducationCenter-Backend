@@ -123,5 +123,22 @@ namespace EducationCenter.Infrastructure.Repositories
             return filteredCourses;
 
         }
+
+        public async Task<int> AddCourseRate(CourseRate rate)
+        {
+            var c = _context.CourseRates.AddAsync(rate);
+            _context.SaveChanges();
+
+            return rate.Id;
+        }
+
+        public async Task<IEnumerable<Course>> GetActiveCoursesByStudentId(int id)
+        {
+            var STUDENT_COURSES = _context.StudentCourses.Where(up => up.StudentId == id).Where(x=>x.Course.Active == true)
+            .Select(c => c.Course)
+            .Include(a => a.Administrator).Include(e => e.Educator).Include(cf => cf.CourseField).ToListAsync();
+
+            return await STUDENT_COURSES;
+        }
     }
 }

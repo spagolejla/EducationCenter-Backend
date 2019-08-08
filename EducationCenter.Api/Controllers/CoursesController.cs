@@ -125,6 +125,15 @@ namespace EducationCenter.Api.Controllers
 
         }
 
+        [Route("api/student/{studentId}/courses/active")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetActiveCoursesByStudentId(int studentId)
+        {
+            IEnumerable<Course> courses = await _courseRepository.GetActiveCoursesByStudentId(studentId);
+            return Ok(courses.ToDTOList());
+
+        }
+
         [Route("api/student/{studentId}/courses")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByStudentId(int studentId)
@@ -140,6 +149,22 @@ namespace EducationCenter.Api.Controllers
         {
             var courseId = await _courseRepository.AddCourse(course.ToEntity());
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("api/course/addRate")]
+        public async Task<ActionResult> PostRate(CourseRateInsertDTO rate)
+        {
+            CourseRate newRate = new CourseRate()
+            {
+                CourseId = rate.CourseId,
+                StudentId = rate.StudentId,
+                Rate = rate.Rate,
+                Comment = rate.Comment
+            };
+
+           var rateId =  _courseRepository.AddCourseRate(newRate);
+           return Ok();
         }
 
         [HttpPost]

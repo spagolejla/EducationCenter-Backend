@@ -28,6 +28,14 @@ namespace EducationCenter.Infrastructure.Repositories
             return educator.Id;
         }
 
+        public async Task<int> AddEducatorRate(EducatorRate rate)
+        {
+            var c = _context.EducatorRates.AddAsync(rate);
+            _context.SaveChanges();
+
+            return rate.Id;
+        }
+
         public async Task<IEnumerable<EducatorRate>> GetAllEducatorRates(int id)
         {
             return await _context.EducatorRates.Where(e => e.EducatorId == id).Include(edc => edc.Educator).Include(std => std.Student).ToListAsync();

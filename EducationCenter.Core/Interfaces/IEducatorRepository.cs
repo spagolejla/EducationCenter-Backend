@@ -17,6 +17,9 @@ namespace EducationCenter.Core.Interfaces
         Task<Educator> GetByUserAccountId(int id);
 
         Task<int> AddEducator(Educator educator);
+
+        Task<int> AddEducatorRate(EducatorRate rate);
+
         void UpdateEducator(Educator educator);
 
     }

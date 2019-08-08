@@ -92,6 +92,22 @@ namespace EducationCenter.Api.Controllers
            
         }
 
+        [HttpPost]
+        [Route("api/educator/addRate")]
+        public async Task<ActionResult> PostRate(EducatorRateInsertDTO rate)
+        {
+            EducatorRate newRate = new EducatorRate()
+            {
+                EducatorId = rate.EducatorId,
+                StudentId = rate.StudentId,
+                Rate = rate.Rate,
+                Comment = rate.Comment
+            };
+
+            var rateId = _educatorRepository.AddEducatorRate(newRate);
+            return Ok();
+        }
+
         [HttpPut]
         [Route("api/educator")]
         public async Task<ActionResult> PutEducator(EducatorUpdateDTO edc)

@@ -10,6 +10,8 @@ namespace EducationCenter.Core.Interfaces
     {
         Task<IEnumerable<Course>> GetAllCourses();
         Task<IEnumerable<Course>> GetActiveCoursesByEducatorId(int id);
+        Task<IEnumerable<Course>> GetActiveCoursesByStudentId(int id);
+
 
         Task<IEnumerable<Course>> GetByEducatorId(int id);
         Task<IEnumerable<Course>> GetByStudentId(int id);
@@ -27,6 +29,8 @@ namespace EducationCenter.Core.Interfaces
 
         Task<int> AddStudents (List<StudentCourse> sc);
         Task<int> AddClass(CourseClass cc);
+        Task<int> AddCourseRate(CourseRate rate);
+
         double GetStudentAttendance(int courseId, int studentId);
 
 
