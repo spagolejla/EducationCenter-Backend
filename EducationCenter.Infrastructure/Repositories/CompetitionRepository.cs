@@ -38,6 +38,11 @@ namespace EducationCenter.Infrastructure.Repositories
 
         }
 
+        public async Task<IEnumerable<Competition>> GetAllActiveCompetitions()
+        {
+            return await _context.Competitions.Include(c => c.Course).Where(a=>a.Active == true).OrderBy(d => d.StartDate).ToListAsync();
+        }
+
         public async Task<IEnumerable<CompetitionApplication>> GetAllApplications(int id)
         {
             return await _context.CompetitionApplications.Where(x => x.CompetitionId == id).Include(c => c.Competition).Include(s => s.Student).OrderBy(d=>d.Date).ToListAsync();

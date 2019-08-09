@@ -9,6 +9,8 @@ namespace EducationCenter.Core.Interfaces
     public interface ICompetitionRepository : IRepository<Competition>
     {
         Task<IEnumerable<Competition>> GetAllCompetitions();
+        Task<IEnumerable<Competition>> GetAllActiveCompetitions();
+
         Task<IEnumerable<Competition>> GetByEducatorId(int id);
         Task<IEnumerable<Competition>> GetActiveCompetitions(int id);
 

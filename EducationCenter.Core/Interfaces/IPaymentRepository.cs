@@ -11,7 +11,10 @@ namespace EducationCenter.Core.Interfaces
         Task<int> AddPayment(Payment payment);
         void UpdatePayment(Payment payment);
         Task<IEnumerable<Payment>> GetAllPayments();
+        Task<IEnumerable<Payment>> GetPaymentsByStudentId(int id);
+
         Task<Payment> GetPaymentById(int id);
+
 
 
 

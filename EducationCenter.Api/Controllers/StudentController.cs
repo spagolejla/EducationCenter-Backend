@@ -17,11 +17,13 @@ namespace EducationCenter.Api.Controllers
     {
         private readonly IStudentRepository _studentRepository;
         private readonly IUserAccountRepository _userAccountRepository;
+        private readonly IPaymentRepository _paymentRepository;
 
-        public StudentController(IStudentRepository studentRepository, IUserAccountRepository userAccountRepository)
+        public StudentController(IStudentRepository studentRepository, IUserAccountRepository userAccountRepository, IPaymentRepository paymentRepository)
         {
             _studentRepository = studentRepository;
             _userAccountRepository = userAccountRepository;
+            _paymentRepository = paymentRepository;
         }
 
         [Route("api/students")]
@@ -38,7 +40,13 @@ namespace EducationCenter.Api.Controllers
         public async Task<ActionResult<StudentDTO>> GetById(int id)
         {
             Student studentRepo = await _studentRepository.GetById(id);
-            return Ok(studentRepo.ToDTO());
+            StudentDTO studentDTO = studentRepo.ToDTO();
+
+
+            IEnumerable<Payment> payments = await _paymentRepository.GetPaymentsByStudentId(studentDTO.ID);
+            studentDTO.Payments = payments.ToDTOList();
+
+            return Ok(studentDTO);
 
         }
 
@@ -73,5 +81,21 @@ namespace EducationCenter.Api.Controllers
             return BadRequest();
         }
 
+        [HttpPut]
+        [Route("api/student")]
+        public async Task<ActionResult> PutStudentDescription(StudentDTO std)
+        {
+            var _std = await _studentRepository.GetById(std.ID);
+            
+            if (_std == null)
+            {
+                return NotFound();
+            }
+
+            _std.Description = std.Description;
+            _studentRepository.UpdateStudent(_std);
+            
+            return NoContent();
+        }
     }
 }

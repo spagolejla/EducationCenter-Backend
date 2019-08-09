@@ -19,7 +19,8 @@ namespace EducationCenter.Api.Contracts
                     UserId = notification.Administrator.Id,
                     Title = notification.Title,
                     Text = notification.Text,
-                    Date = notification.Date
+                    Date = notification.Date,
+                    AdministratorId = notification.AdministratorId
                 };
             }
             else
@@ -31,7 +32,8 @@ namespace EducationCenter.Api.Contracts
                     UserId = notification.Educator.Id,
                     Title = notification.Title,
                     Text = notification.Text,
-                    Date = notification.Date
+                    Date = notification.Date,
+                    EducatorId = notification.EducatorId
                 };
             }
            

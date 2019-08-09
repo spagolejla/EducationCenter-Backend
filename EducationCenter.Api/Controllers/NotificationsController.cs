@@ -14,10 +14,16 @@ namespace EducationCenter.Api.Controllers
     public class NotificationsController : ControllerBase
     {
         private readonly INotificationRepository _notificationRepository;
+        private readonly IAdministratorRepository _administratorRepository;
+        private readonly IEducatorRepository _educatorRepository;
 
-        public NotificationsController(INotificationRepository notificationRepository)
+
+        public NotificationsController(INotificationRepository notificationRepository, IAdministratorRepository administratorRepository, IEducatorRepository educatorRepository)
         {
             _notificationRepository = notificationRepository;
+            _educatorRepository = educatorRepository;
+            _administratorRepository = administratorRepository;
+
         }
 
         [HttpGet]
@@ -25,8 +31,38 @@ namespace EducationCenter.Api.Controllers
         public async Task<ActionResult<IEnumerable<NotificationDTO>>> GetAllNotifications()
         {
             IEnumerable<Notification> notifications = await _notificationRepository.GetAllNotifications();
+            IEnumerable<NotificationDTO> notificationDTOs = notifications.ToDTOList();
+            foreach (var item in notificationDTOs)
+            {
+                if (item.AdministratorId !=null)
+                {
+                    int admId = Convert.ToInt32(item.AdministratorId);
+                    Administrator adm = await _administratorRepository.GetById(admId);
+                    if (adm != null)
+                    {
+                        AdministratorDTO admDTO = adm.ToDTO();
+                        item.AvatarUrl = admDTO.AvatarUrl;
+                    }
+                }
+              
+                else
+                {
+                    int edcId = Convert.ToInt32(item.EducatorId);
 
-            return Ok(notifications.ToDTOList());
+                    Educator edc = await _educatorRepository.GetById(edcId);
+                    if (edc!=null)
+                    {
+                        EducatorDTO educatorDTO = edc.ToDTO();
+                        item.AvatarUrl = educatorDTO.AvatarUrl;
+                    }
+                }
+
+
+
+
+            }
+
+            return Ok(notificationDTOs);
         }
 
 
@@ -82,7 +118,7 @@ namespace EducationCenter.Api.Controllers
 
             _notification.Title = notification.Title;
             _notification.Text = notification.Text;
-           
+
 
             _notificationRepository.UpdateNotification(notification);
 

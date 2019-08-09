@@ -47,6 +47,25 @@ namespace EducationCenter.Api.Controllers
 
         }
 
+        [Route("api/competitions/active")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CompetitionDTO>>> GetAllActiveCompetitions()
+        {
+            IEnumerable<Competition> competitions = await _competitionRepositry.GetAllActiveCompetitions();
+            IEnumerable<CompetitionDTO> competitionsDTO = competitions.ToDTOList();
+
+            foreach (var item in competitionsDTO)
+            {
+                IEnumerable<CompetitionApplication> applications = await _competitionRepositry.GetAllApplications(item.Id);
+                if (applications.Count() != 0)
+                {
+                    item.Applications = applications.ToDTOList();
+                    item.CurrentCandidatesNumber = applications.Count();
+                }
+            }
+            return Ok(competitionsDTO);
+
+        }
         [Route("api/competition/{id}")]
         [HttpGet]
         public async Task<ActionResult<CompetitionDTO>> GetById(int id)

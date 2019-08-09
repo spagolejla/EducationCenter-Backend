@@ -12,7 +12,10 @@ namespace EducationCenter.Api.Contracts
         public string Text { get; set; }
         public string User { get; set; }
         public int UserId { get; set; }
-        public DateTime Date { get; set; }
+        public int? AdministratorId { get; set; }
+        public int? EducatorId { get; set; }
 
+        public DateTime Date { get; set; }
+        public string AvatarUrl { get; set; }
     }
 }
