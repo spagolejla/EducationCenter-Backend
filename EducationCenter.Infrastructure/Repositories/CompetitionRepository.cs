@@ -27,6 +27,13 @@ namespace EducationCenter.Infrastructure.Repositories
             return competition.Id;
         }
 
+        public async Task<int> AddCompetitionApplication(CompetitionApplication app)
+        {
+            var a = _context.CompetitionApplications.AddAsync(app);
+            _context.SaveChanges();
+            return app.Id;
+        }
+
         public void DeactivateCompetition(Competition competition)
         {
             _context.SaveChanges();

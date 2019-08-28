@@ -20,6 +20,7 @@ namespace EducationCenter.Core.Interfaces
 
         Task<Competition> GetById(int id);
         Task<int> AddCompetition(Competition competition);
+        Task<int> AddCompetitionApplication(CompetitionApplication app);
         void UpdateCompetition(Competition competition);
         void DeactivateCompetition(Competition competition);
 

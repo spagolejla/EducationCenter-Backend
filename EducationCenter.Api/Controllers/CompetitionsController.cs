@@ -201,6 +201,21 @@ namespace EducationCenter.Api.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("api/competition/addApplication")]
+        public async Task<ActionResult> AddApplication(StudentApplicationInsert app)
+        {
+            CompetitionApplication newApp = new CompetitionApplication()
+            {
+               CompetitionId = app.CompetitionId,
+               StudentId = app.StudentId,
+               Date = DateTime.Now
+            };
+
+            var competitionId = await _competitionRepositry.AddCompetitionApplication(newApp);
+            return Ok();
+        }
+
 
         [HttpPut]
         [Route("api/competition")]
