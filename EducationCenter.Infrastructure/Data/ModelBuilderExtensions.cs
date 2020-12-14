@@ -19,7 +19,7 @@ namespace EducationCenter.Infrastructure.Data
                                                       new UserAccount("student","test",3, "https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Sunglasses&hatColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Black&eyeType=Close&eyebrowType=Angry&mouthType=Default&skinColor=Light") { Id = 3 });
 
             modelBuilder.Entity<Administrator>().HasData(new Administrator("Lejla", "Spago", "lejla.spago@edu.fit.ba", "036/555-999", 1) { Id = 1 });
-
+    
         }
     }
 }

@@ -1,0 +1,42 @@
+<mat-card class="box" >
+<div style= "display: inline-block; width: 100%">
+  <div class="head">Student Module</div>
+  <div class="example-button-row icons">
+
+    <button mat-icon-button  (click)="hiddeNotif()" style="color: rgba(3, 211, 192, 1);" aria-label="Example icon-button with a heart icon">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+
+
+    <button mat-icon-button  (click)="showNotif()" style="color: rgba(3, 211, 192, 1);" aria-label="Example icon-button with a heart icon">
+      <mat-icon>notifications</mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu4" style="color:rgba(27, 188, 155, 1);" aria-label="Example icon-button with a heart icon">
+      <mat-icon>person</mat-icon>
+    </button>
+ <mat-menu #menu4="matMenu">
+
+          <button mat-menu-item routerLink='/profile'>My profile</button>
+
+        </mat-menu>
+  </div>
+</div>
+
+
+</mat-card>
+<mat-card class="box" *ngIf="!hiddenNotif">
+<h2>Latest notifications</h2>
+ <cdk-virtual-scroll-viewport  style="height: 600px" itemSize="90" >
+        <ng-container>
+          <app-notification-list></app-notification-list>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+</mat-card>
+
+<mat-card class="box" *ngIf="hiddenNotif">
+
+   <app-explore-courses></app-explore-courses>
+
+
+  </mat-card>

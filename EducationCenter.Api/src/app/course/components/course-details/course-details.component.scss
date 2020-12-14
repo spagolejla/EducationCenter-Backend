@@ -1,0 +1,55 @@
+.container {
+  margin-top: 20px;
+  margin-left: 5%;
+  margin-right: 10%;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 90%;
+}
+.back-btn{
+  background-color: rgba(0, 150, 136, 1);
+  color: white;
+
+}
+
+#card {
+  background: white;
+  border-radius: 2px;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+margin-top: 1%;
+ }
+
+ .part{
+
+  margin-top: 10px;
+
+
+}
+
+.details-row{
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: rgba(238, 238, 238, 1);
+}
+.title{
+  width: 100%;
+}
+.avgRate{
+ border: 1px solid red;
+ margin-top: 2%;
+ margin-left: 4%;
+ margin-right: 4%;
+ width: 20%;
+ text-align: center;
+
+}
+#spinnerWrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

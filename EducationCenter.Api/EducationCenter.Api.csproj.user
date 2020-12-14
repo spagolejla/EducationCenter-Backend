@@ -10,5 +10,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_DbContextTypeFullName>EducationCenter.Infrastructure.Data.MyContext</WebStackScaffolding_DbContextTypeFullName>
+    <NameOfLastUsedPublishProfile>s75.wrd.app.fit.ba - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

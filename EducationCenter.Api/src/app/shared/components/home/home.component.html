@@ -1,0 +1,48 @@
+<div class="container">
+<div class="top-menu">
+  <span class="menu-course">
+    <button mat-button [matMenuTriggerFor]="menu1" class="btn-course">Courses</button>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item [routerLink]="['/course/addedit', 0]">Create new</button>
+      <button mat-menu-item routerLink='/course'>Managae courses</button>
+    </mat-menu>
+  </span>
+  <span class="menu-educator">
+      <button mat-button [matMenuTriggerFor]="menu2" class="btn-educator">Employees</button>
+      <mat-menu #menu2="matMenu">
+        <button mat-menu-item routerLink='/educator'>Educators</button>
+        <button mat-menu-item routerLink='/administrator'>Administrators</button>
+      </mat-menu>
+    </span>
+     <span class="menu-profile">
+      <button mat-button [matMenuTriggerFor]="menu3" class="btn-profile">Students</button>
+      <mat-menu #menu3="matMenu">
+        <button mat-menu-item routerLink='/student'>Show students</button>
+        <button mat-menu-item routerLink='/payment'>Payments</button>
+      </mat-menu>
+    </span>
+       <span class="menu-more">
+        <button mat-button [matMenuTriggerFor]="menu4" class="btn-more">
+          <i class="material-icons ">more_horiz</i>
+        </button>
+        <mat-menu #menu4="matMenu">
+          <button mat-menu-item [routerLink]="['/notification/addedit', 0]">New notificaton</button>
+          <button mat-menu-item routerLink='/profile'>View profile</button>
+        </mat-menu>
+      </span>
+
+
+</div>
+<div>
+  <h4>Latest notifications</h4>
+</div>
+<div>
+    <cdk-virtual-scroll-viewport  style="height: 800px" itemSize="90" >
+        <ng-container>
+          <app-notification-list></app-notification-list>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+
+</div>
+
+</div>

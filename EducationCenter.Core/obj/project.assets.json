@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Core\\EducationCenter.Core.csproj",
+      "projectUniqueName": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Core\\EducationCenter.Core.csproj",
       "projectName": "EducationCenter.Core",
-      "projectPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Core\\EducationCenter.Core.csproj",
+      "projectPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Core\\EducationCenter.Core.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Core\\obj\\",
+      "outputPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

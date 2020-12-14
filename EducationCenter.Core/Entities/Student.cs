@@ -36,6 +36,7 @@ namespace EducationCenter.Core.Entities
 
         public int Points { get; set; }
 
+       
 
 
     }

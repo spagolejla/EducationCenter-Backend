@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://www.s75.wrd.app.fit.ba/", //promjeniti
+    "secure": false
+  }
+}

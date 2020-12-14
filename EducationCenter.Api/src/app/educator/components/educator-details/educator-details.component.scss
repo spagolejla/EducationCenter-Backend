@@ -1,0 +1,98 @@
+#card {
+  background: white;
+  border-radius: 2px;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+ }
+ #card h2, #card h4 {
+   color: black;
+   font-weight: normal;
+ }
+ #card h4 {
+   font-style: italic;
+   margin-top: 9px;
+ }
+ #card h2 {
+   margin-bottom: 9px;
+ }
+ #card img {
+   height: 150px;
+   width: 150px;
+
+   margin-bottom: 2em;
+   margin-top: 2em;
+ }
+
+ .container {
+  margin-top: 20px;
+  margin-left: 5%;
+  margin-right: 10%;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 90%;
+
+}
+.table-container {
+  margin-top: 20px;
+  margin-left: 5%;
+  margin-right: 10%;
+  margin-top: 1em;
+}
+
+.table-header{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.table-body{
+  margin-top: 10px;
+  width: 100%;
+}
+
+.table-cell{
+  text-align: left;
+  font-size: 18px;
+  padding: 0.5em;
+}
+.center{
+  text-align: center;
+}
+.back-button {
+  background-color: rgba(238, 238, 238, 1);
+  color: black;
+  float: right;
+}
+.rate-btn{
+  color: white;
+  background-color: rgba(0, 150, 136, 1);
+
+}
+
+.part{
+
+  margin-top: 20px;
+
+
+}
+
+.details-row{
+  padding: 10px;
+  margin-top: 10px;
+  background-color: rgba(238, 238, 238, 1);
+}
+.back-btn{
+  background-color: rgba(0, 150, 136, 1);
+  color: white;
+
+}
+#spinnerWrapper
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

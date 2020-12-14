@@ -13086,7 +13086,9 @@
     ".NETCoreApp,Version=v2.2": [
       "EducationCenter.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
+      "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
+      "Microsoft.AspNetCore.StaticFiles >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 2.2.4",
       "Microsoft.EntityFrameworkCore.Relational >= 2.2.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
@@ -13103,11 +13105,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Api\\EducationCenter.Api.csproj",
+      "projectUniqueName": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Api\\EducationCenter.Api.csproj",
       "projectName": "EducationCenter.Api",
-      "projectPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Api\\EducationCenter.Api.csproj",
+      "projectPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Api\\EducationCenter.Api.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Api\\obj\\",
+      "outputPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13126,8 +13128,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj": {
-              "projectPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj"
+            "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj": {
+              "projectPath": "D:\\FIT\\Završni\\EducationCenter\\EducationCenter-Backend_WithUI\\EducationCenter.Infrastructure\\EducationCenter.Infrastructure.csproj"
             }
           }
         }
@@ -13147,8 +13149,16 @@
             "version": "[2.2.0, )",
             "autoReferenced": true
           },
+          "Microsoft.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.StaticFiles": {
             "target": "Package",
             "version": "[2.2.0, )"
           },

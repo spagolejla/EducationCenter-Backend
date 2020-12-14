@@ -1,0 +1,156 @@
+<div id="spinnerWrapper">
+    <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+  </div>
+<div class="container" *ngIf="hideSpinner">
+
+  <div>
+    <mat-card id="card" *ngIf='educator' class="mat-elevation-z3">
+
+      <div style="width: 100%; display:inline-block;">
+        <div style=" float:right;">
+          <button mat-button class="back-btn" [routerLink]="['/educator']">Back</button>
+        </div>
+
+
+
+
+      <div style="float:left;margin-left:43%;">
+        <img src={{educator.avatarUrl}} />
+      </div>
+    </div>
+    <div>
+        <h3 >{{educator.title + ' ' + educator.firstName + ' '+ educator.lastName}}</h3>
+
+    </div>
+
+
+    </mat-card>
+  </div>
+
+
+
+
+<div style="display: inline-block;width: 100%">
+  <div class="part" style="float:left; width: 73%;height: 100%">
+    <mat-card *ngIf='educator' class="mat-elevation-z3">
+      <mat-card-title>
+        <h4 style="color:rgba(0, 150, 136, 1);display:inline-block">Additional informations</h4>
+        <button mat-mini-fab color="primary" style="margin-left: 15px; margin-top: 15px;" [routerLink]="['/educator/edit', educator.id]" *ngIf='_service?.isAdmin'>
+          <i class="material-icons">edit</i>
+        </button>
+
+      </mat-card-title>
+      <mat-card-content>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Course field: </b> {{ educator.courseField }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Email: </b> {{ educator.email }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Phone: </b>{{ educator.phone }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Username: </b>{{ educator.username }} <br />
+        </div>
+        <div class="details-row">
+          <b style="color:rgba(0, 150, 136, 1);">Active: </b>{{ educator.active }} <br />
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="part" style=" float:right; width:26%;height: 100%;">
+      <div>
+          <mat-card *ngIf='educator' class="mat-elevation-z3">
+
+              <mat-card-content style="padding-left:15%;">
+                  <p style="font-size: 2em; color:rgba(0, 150, 136, 1);"><b>Average rate</b></p>
+                            </mat-card-content>
+
+            </mat-card>
+      </div>
+    <div style="margin-top: 20px;">
+        <mat-card *ngIf='educator' style="background:rgba(0, 150, 136, 1);" class="mat-elevation-z3">
+
+            <mat-card-content style="padding:30%;">
+  <p style="font-size: 5em; color:white">{{educator.avgRate |  number:'1.1-1'}}</p>
+            </mat-card-content>
+
+          </mat-card>
+    </div>
+
+  </div>
+</div>
+<div class="part mat-elevation-z2">
+    <mat-accordion >
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5 style="color:rgba(0, 150, 136, 1);">Educator courses</h5>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let course of courses">
+                  <div class="details-row">
+                      <b> {{ course.name }} </b><br />
+                    </div>
+              </mat-list-item>
+          </mat-list>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+</div>
+
+<div class="part mat-elevation-z2">
+  <mat-accordion >
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h5 style="color:rgba(0, 150, 136, 1);">Educator rates</h5>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+          <div class="table-body">
+              <button mat-button class="rate-btn" *ngIf='_service?.isStudent' (click)='rateEducator()' 
+              >Add rate</button>
+            <table mat-table [dataSource]="dataSource" class=" table-body mat-elevation-z3">
+
+              <ng-container matColumnDef="Student">
+                <th mat-header-cell *matHeaderCellDef class="table-cell center"> Student </th>
+                <td mat-cell *matCellDef="let rate" class="table-cell center"> {{rate.student}} </td>
+
+              </ng-container>
+
+              <ng-container matColumnDef="Comment">
+                <th mat-header-cell *matHeaderCellDef class="table-cell center"> Comment</th>
+                <td mat-cell *matCellDef="let rate" class="table-cell center"> {{rate.comment}} </td>
+
+              </ng-container>
+
+              <ng-container matColumnDef="Rate">
+                <th mat-header-cell *matHeaderCellDef class="table-cell center"> Rate</th>
+                <td mat-cell *matCellDef="let rate" class="table-cell center"> {{rate.rate }} </td>
+
+              </ng-container>
+
+
+
+
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+          </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+</div>
+
+</div>
